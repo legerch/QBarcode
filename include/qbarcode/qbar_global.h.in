@@ -1,0 +1,131 @@
+#ifndef QBARCODE_GLOBAL_H
+#define QBARCODE_GLOBAL_H
+
+/*!
+ * \file qbar_global.h
+ *
+ * \note
+ * Based on <a href="https://github.com/legerch/projects-template">Projects template repository</a>.
+ * Template file version: 2025-07-24
+ */
+
+#include <QtGlobal>
+
+/**********************************
+ * Library informations
+ *********************************/
+#define QBAR_INFO_ID     "@PROJECT_NAME@"
+#define QBAR_INFO_NAME   "@PRJ_READABLE_NAME@"
+
+/**********************************
+ * Version management
+ *********************************/
+
+/*!
+ * \brief Use to perform compilation version comparaisons
+ * \details
+ * For example:
+ * \code{.cpp}
+ * #if QBAR_VERSION >= QBAR_VERSION_ENCODE(1,0,0)
+ *     // Do stuff for version 1.0.0 or higher
+ * #else
+ *     // Do stuff for version 0.0.x
+ * #endif
+ * \endcode
+ */
+#define QBAR_VERSION_ENCODE(major, minor, path)    ((major) * 10000 + (minor) * 100 + (patch))
+
+#define QBAR_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define QBAR_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define QBAR_VERSION_PATCH @PROJECT_VERSION_PATCH@
+#define QBAR_VERSION       QBAR_VERSION_ENCODE(QBAR_VERSION_MAJOR, QBAR_VERSION_MINOR, QBAR_VERSION_PATCH)
+#define QBAR_VERSION_STR   "@PROJECT_VERSION@"
+
+/*!
+ * \cond INTERNAL
+ */
+
+/**********************************
+ * Library management
+ *********************************/
+#if defined(QBAR_LIBRARY_BUILD)
+#  define QBAR_EXPORT Q_DECL_EXPORT
+#else
+#  define QBAR_EXPORT Q_DECL_IMPORT
+#endif
+
+/**********************************
+ * Deprecations warnings
+ *********************************/
+#define QBAR_DEPREC              [[deprecated]]          /**< Use to mark a method as deprecated. \n\code{.cpp}QBAR_DEPREC void myOldFct(); \endcode */
+#define QBAR_DEPREC_X(reason)    [[deprecated(reason)]] 	/**< Use to mark a method as deprecated and specify a reason. \n\code{.cpp}QBAR_DEPREC_X("Use myNewFct() instead") void myOldFunc(); \endcode */
+
+/**********************************
+ * Custom macros used to detect custom
+ * built-in functions
+ * Sources:
+ * - MSVC: No equivalent
+ * - GCC: https://gcc.gnu.org/onlinedocs/gcc-13.2.0/cpp/_005f_005fhas_005fbuiltin.html
+ * - Clang: https://clang.llvm.org/docs/LanguageExtensions.html#has-builtin
+ *********************************/
+#if defined(__GNUC__) || defined(__clang__)
+#   define QBAR_BUILTIN(x)  __has_builtin(x)
+#else
+#   define QBAR_BUILTIN(x)  0
+#endif
+
+/**********************************
+ * Custom macros in order to
+ * not trigger warning on expected
+ * behaviour
+ *********************************/
+#define QBAR_FALLTHROUGH  [[fallthrough]]    /**< Indicates that the fall through from the previous case label is intentional and should not be diagnosed by a compiler that warns on fallthrough */
+
+/**********************************
+ * Context informations
+ *********************************/
+#define QBAR_FILE            __FILE__
+#define QBAR_LINE            __LINE__
+#define QBAR_FCTNAME         __func__
+
+#define QBAR_FCTSIG          Q_FUNC_INFO
+
+/**********************************
+ * Variables attributes
+ *********************************/
+#define QBAR_VAR_MAYBE_UNUSED    [[maybe_unused]]
+#define QBAR_VAR_UNUSED          QBAR_VAR_MAYBE_UNUSED
+
+/**********************************
+ * Classes behaviours
+ *********************************/
+#define QBAR_DISABLE_COPY(Class) \
+    Q_DISABLE_COPY(Class)
+
+#define QBAR_DISABLE_MOVE(Class) \
+    Q_DISABLE_MOVE(Class)
+
+#define QBAR_DISABLE_COPY_MOVE(Class) \
+    Q_DISABLE_COPY_MOVE(Class)
+
+/**********************************
+ * Qt Compatibility workaround
+ *********************************/
+
+ #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#   define QBAR_QTCOMPAT_VARIANT_TYPE(var)    (var.type())
+#else
+#   define QBAR_QTCOMPAT_VARIANT_TYPE(var)    (var.metaType())
+#endif
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 4, 0)
+#   define QBAR_QTCOMPAT_STR_VIEW const QString&
+#else
+#   define QBAR_QTCOMPAT_STR_VIEW QAnyStringView
+#endif
+
+/*!
+ * \endcond
+ */
+
+#endif // QBARCODE_GLOBAL_H

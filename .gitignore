@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+
+# IDE Configuration
+.vscode/
+*.user
+*.code-workspace
+
+# Doc generation
+api-internal/
+api-public/
+
+# Binaries
+build/
+
+# Auto generated files
+qbar_global.h
+metadata/windows/infos.rc
