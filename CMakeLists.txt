@@ -94,15 +94,20 @@ set(PROJECT_LINKING_LIB
 ### Public interface
 set(PROJECT_HEADERS_PUBLIC
     qbartypes.h
+
+    datas/barcode.h
 )
 
 ### Private
 set(PROJECT_HEADERS_PRIVATE
-
+    datas/barcode_priv.h
 )
 
 set(PROJECT_SOURCES
     qbartypes.cpp
+
+    datas/barcode.cpp
+    datas/barcode_priv.cpp
 )
 
 set(PROJECT_RESSOURCES
