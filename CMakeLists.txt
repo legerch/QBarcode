@@ -102,7 +102,7 @@ set(PROJECT_HEADERS_PUBLIC
 ### Private
 set(PROJECT_HEADERS_PRIVATE
     datas/barcode_priv.h
-    datas/qrcode_priv.h
+
 )
 
 set(PROJECT_SOURCES
@@ -111,7 +111,6 @@ set(PROJECT_SOURCES
     datas/barcode.cpp
     datas/barcode_priv.cpp
     datas/qrcode.cpp
-    datas/qrcode_priv.cpp
 )
 
 set(PROJECT_RESSOURCES
