@@ -97,12 +97,16 @@ set(PROJECT_HEADERS_PUBLIC
 
     datas/barcode.h
     datas/qrcode.h
+
+    payloads/payloadbase.h
+    payloads/payloadqrstring.h
 )
 
 ### Private
 set(PROJECT_HEADERS_PRIVATE
     datas/barcode_priv.h
 
+    payloads/payloadbase_priv.h
 )
 
 set(PROJECT_SOURCES
@@ -111,6 +115,10 @@ set(PROJECT_SOURCES
     datas/barcode.cpp
     datas/barcode_priv.cpp
     datas/qrcode.cpp
+
+    payloads/payloadbase.cpp
+    payloads/payloadbase_priv.cpp
+    payloads/payloadqrstring.cpp
 )
 
 set(PROJECT_RESSOURCES
