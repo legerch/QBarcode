@@ -1,5 +1,5 @@
-#ifndef QBARCODEBARCODE_PRIV_H
-#define QBARCODEBARCODE_PRIV_H
+#ifndef QBARCODE_BARCODE_PRIV_H
+#define QBARCODE_BARCODE_PRIV_H
 
 #include "qbarcode/datas/barcode.h"
 
@@ -45,4 +45,4 @@ protected:
 /* Qt specific meta-system   */
 /*****************************/
 
-#endif // QBARCODEBARCODE_PRIV_H
+#endif // QBARCODE_BARCODE_PRIV_H

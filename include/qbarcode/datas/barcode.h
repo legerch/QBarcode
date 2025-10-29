@@ -27,7 +27,7 @@ public:
     virtual ~Barcode();
 
 protected:
-    explicit Barcode(BarcodePrivate *impl);
+    explicit Barcode(std::unique_ptr<BarcodePrivate> impl);
 
 public:
     Barcode &operator=(Barcode &&) noexcept;

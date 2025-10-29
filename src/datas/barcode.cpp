@@ -30,8 +30,8 @@ Barcode::Barcode()
 
 Barcode::Barcode(Barcode &&other) noexcept = default;
 
-Barcode::Barcode(BarcodePrivate *impl)
-    : d_ptr(std::unique_ptr<BarcodePrivate>(impl))
+Barcode::Barcode(std::unique_ptr<BarcodePrivate> impl)
+    : d_ptr(std::move(impl))
 {
     /* Nothing to do */
 }
