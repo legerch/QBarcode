@@ -1,7 +1,7 @@
 #ifndef QBARCODE_BARCODE_H
 #define QBARCODE_BARCODE_H
 
-#include "qbarcode/qbar_global.h"
+#include "qbarcode/qbartypes.h"
 #include <memory>
 
 /*****************************/
@@ -25,6 +25,9 @@ public:
     Barcode &operator=(Barcode &&) noexcept;
 
     virtual ~Barcode();
+
+public:
+    BarType getType() const;
 
 protected:
     explicit Barcode(std::unique_ptr<BarcodePrivate> impl);

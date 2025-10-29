@@ -20,10 +20,12 @@ class BarcodePrivate
     QBAR_DISABLE_COPY_MOVE(BarcodePrivate)
 
 public:
-    explicit BarcodePrivate(Barcode *parent);
+    explicit BarcodePrivate(BarType idType, Barcode *parent);
     virtual ~BarcodePrivate();
 
 protected:
+    BarType m_idType;
+
     Barcode *q_ptr = nullptr;
 };
 

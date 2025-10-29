@@ -29,6 +29,26 @@ namespace qbar
 /*****************************/
 
 /*!
+ * \brief Use to convert barcode types to string.
+ *
+ * \param[in] idType
+ * Type ID to convert. \n
+ * If unknown, string "unknown" will be returned.
+ *
+ * \return
+ * Returns string equivalent.
+ */
+QString barTypeToString(BarType idType)
+{
+    static const QHash<BarType, QString> MAP_STR_TYPE =
+    {
+        {BarType::QBAR_TYPE_QRCODE, "QrCode"},
+    };
+
+    return MAP_STR_TYPE.value(idType, "Unknown");
+}
+
+/*!
  * \brief Used to retrieve \b QBarcode library
  * version.
  *

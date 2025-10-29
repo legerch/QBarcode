@@ -20,7 +20,7 @@ namespace qbar
 /*****************************/
 
 QrCodePrivate::QrCodePrivate(QrCode *parent)
-    : BarcodePrivate(parent)
+    : BarcodePrivate(BarType::QBAR_TYPE_QRCODE, parent)
 {
     /* Nothing to do */
 }

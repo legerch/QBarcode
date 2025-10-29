@@ -19,8 +19,8 @@ namespace qbar
 /* Functions implementation  */
 /*****************************/
 
-BarcodePrivate::BarcodePrivate(Barcode *parent)
-    : q_ptr(parent)
+BarcodePrivate::BarcodePrivate(BarType idType, Barcode *parent)
+    : m_idType(idType), q_ptr(parent)
 {
     /* Nothing to do */
 }

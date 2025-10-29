@@ -18,6 +18,21 @@ namespace qbar
 /* Library types             */
 /*****************************/
 
+    /*!
+     * \brief List of all supported barcode types
+     *
+     * \sa barTypeToString()
+     */
+    enum class BarType
+    {
+        QBAR_TYPE_UNKNOWN = 0,  /**< Unknown/unsupported barcode type */
+
+        QBAR_TYPE_QRCODE        /**< QrCode type */
+    };
+    Q_ENUM_NS(BarType)
+
+    QBAR_EXPORT QString barTypeToString(BarType idType);
+
 /*****************************/
 /* Library methods           */
 /*****************************/

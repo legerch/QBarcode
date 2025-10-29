@@ -36,6 +36,11 @@ Barcode::~Barcode()
     /* Nothing to do */
 }
 
+BarType Barcode::getType() const
+{
+    return d_ptr->m_idType;
+}
+
 /*****************************/
 /* Qt specific methods       */
 /*****************************/
