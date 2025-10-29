@@ -22,11 +22,9 @@ class QBAR_EXPORT QrCode : public Barcode
 public:
     QrCode();
     QrCode(QrCode &&other) noexcept;
+    QrCode &operator=(QrCode &&) noexcept;
 
     virtual ~QrCode();
-
-public:
-    QrCode &operator=(QrCode &&) noexcept;
 
 private:
     Q_DECLARE_PRIVATE(QrCode)

@@ -29,13 +29,12 @@ QrCode::QrCode()
 }
 
 QrCode::QrCode(QrCode &&other) noexcept = default;
+QrCode &QrCode::operator=(QrCode &&) noexcept = default;
 
 QrCode::~QrCode()
 {
     /* Nothing to do */
 }
-
-QrCode &QrCode::operator=(QrCode &&) noexcept = default;
 
 /*****************************/
 /* Qt specific methods       */

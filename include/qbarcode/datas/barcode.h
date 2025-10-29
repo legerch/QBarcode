@@ -21,16 +21,13 @@ class QBAR_EXPORT Barcode
     QBAR_DISABLE_COPY(Barcode)
 
 public:
-    Barcode();
     Barcode(Barcode &&other) noexcept;
+    Barcode &operator=(Barcode &&) noexcept;
 
     virtual ~Barcode();
 
 protected:
     explicit Barcode(std::unique_ptr<BarcodePrivate> impl);
-
-public:
-    Barcode &operator=(Barcode &&) noexcept;
 
 protected:
     std::unique_ptr<BarcodePrivate> d_ptr;
