@@ -25,6 +25,7 @@ public:
 
 protected:
     BarType m_idType;
+    std::unique_ptr<Payload> m_payload;
 
     Barcode *q_ptr = nullptr;
 };
