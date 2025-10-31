@@ -30,6 +30,12 @@ public:
     void updateData();
 
 protected:
+    void copyBaseTo(PayloadPrivate *other) const;
+
+public:
+    virtual std::unique_ptr<PayloadPrivate> clone(Payload *parent) const = 0;
+
+protected:
     virtual BarError convert() = 0;
 
 protected:

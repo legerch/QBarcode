@@ -38,6 +38,13 @@ void PayloadPrivate::updateData()
     }
 }
 
+void PayloadPrivate::copyBaseTo(PayloadPrivate *other) const
+{
+    other->m_idType = m_idType;
+    other->m_data = m_data;
+    other->m_lastErr = m_lastErr;
+}
+
 /*****************************/
 /* Qt specific methods       */
 /*****************************/

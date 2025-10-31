@@ -17,11 +17,12 @@ namespace qbar
 class PayloadQrStringPrivate;
 class QBAR_EXPORT PayloadQrString : public Payload
 {
-    QBAR_DISABLE_COPY(PayloadQrString)
-
 public:
     PayloadQrString();
     PayloadQrString(const QString &data);
+
+    PayloadQrString(const PayloadQrString &other);
+    PayloadQrString &operator=(const PayloadQrString &other);
 
     PayloadQrString(PayloadQrString &&other) noexcept;
     PayloadQrString &operator=(PayloadQrString &&) noexcept;

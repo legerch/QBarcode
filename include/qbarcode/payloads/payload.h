@@ -18,9 +18,10 @@ namespace qbar
 class PayloadPrivate;
 class QBAR_EXPORT Payload
 {
-    QBAR_DISABLE_COPY(Payload)
-
 public:
+    Payload(const Payload &other);
+    Payload &operator=(const Payload &other);
+
     Payload(Payload &&other) noexcept;
     Payload &operator=(Payload &&) noexcept;
 

@@ -22,6 +22,20 @@ namespace qbar
 /*      Public Class         */
 /*****************************/
 
+Payload::Payload(const Payload &other)
+{
+    d_ptr = other.d_ptr->clone(this);
+}
+
+Payload &Payload::operator=(const Payload &other)
+{
+    if(this != &other){
+        d_ptr = other.d_ptr->clone(this);
+    }
+
+    return *this;
+}
+
 Payload::Payload(Payload &&other) noexcept = default;
 Payload& Payload::operator=(Payload &&other) noexcept = default;
 

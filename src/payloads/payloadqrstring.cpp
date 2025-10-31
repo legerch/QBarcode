@@ -27,12 +27,15 @@ class PayloadQrStringPrivate : public PayloadPrivate
     Q_DECLARE_PUBLIC(PayloadQrString)
     QBAR_DISABLE_COPY_MOVE(PayloadQrStringPrivate)
 
-protected:
-    virtual BarError convert() override;
+public:
+    explicit PayloadQrStringPrivate(Payload *parent);
+    virtual ~PayloadQrStringPrivate();
 
 public:
-    explicit PayloadQrStringPrivate(PayloadQrString *parent);
-    virtual ~PayloadQrStringPrivate();
+    virtual std::unique_ptr<PayloadPrivate> clone(Payload *parent) const override;
+
+protected:
+    virtual BarError convert() override;
 
 protected:
     QString m_string;
@@ -43,7 +46,7 @@ protected:
 /*      Private Class        */
 /*****************************/
 
-PayloadQrStringPrivate::PayloadQrStringPrivate(PayloadQrString *parent)
+PayloadQrStringPrivate::PayloadQrStringPrivate(Payload *parent)
     : PayloadPrivate(PayloadType::PAYLOAD_TYPE_GENERIC_STRING, parent)
 {
     /* Nothing to do */
@@ -52,6 +55,18 @@ PayloadQrStringPrivate::PayloadQrStringPrivate(PayloadQrString *parent)
 PayloadQrStringPrivate::~PayloadQrStringPrivate()
 {
     /* Nothing to do */
+}
+
+std::unique_ptr<PayloadPrivate> PayloadQrStringPrivate::clone(Payload *parent) const
+{
+    /* Perform base copy */
+    auto copy = std::make_unique<PayloadQrStringPrivate>(parent);
+    copyBaseTo(copy.get());
+
+    /* Copy child members */
+    copy->m_string = m_string;
+
+    return copy;
 }
 
 BarError PayloadQrStringPrivate::convert()
@@ -81,6 +96,21 @@ PayloadQrString::PayloadQrString(const QString &data)
     : PayloadQrString()
 {
     setString(data);
+}
+
+PayloadQrString::PayloadQrString(const PayloadQrString &other)
+    : PayloadQrString()
+{
+    *this = other;
+}
+
+PayloadQrString &PayloadQrString::operator=(const PayloadQrString &other)
+{
+    if(this != &other){
+        d_ptr = other.d_ptr->clone(this);
+    }
+
+    return *this;
 }
 
 PayloadQrString::PayloadQrString(PayloadQrString &&other) noexcept = default;
