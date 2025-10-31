@@ -1,7 +1,7 @@
 #ifndef QBARCODE_PAYLOADBASE_H
 #define QBARCODE_PAYLOADBASE_H
 
-#include "qbarcode/qbar_global.h"
+#include "qbarcode/qbartypes.h"
 #include <memory>
 
 /*****************************/
@@ -28,6 +28,16 @@ public:
 
 protected:
     explicit PayloadBase(std::unique_ptr<PayloadBasePrivate> impl);
+
+public:
+    bool isValid() const;
+    PayloadType getType() const;
+
+    QByteArray getData() const;
+    QString getString() const;
+
+public:
+    void clear();
 
 protected:
     std::unique_ptr<PayloadBasePrivate> d_ptr;

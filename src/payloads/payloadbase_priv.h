@@ -3,6 +3,8 @@
 
 #include "qbarcode/payloads/payloadbase.h"
 
+#include <QByteArray>
+
 /*****************************/
 /* Namespace instructions    */
 /*****************************/
@@ -21,10 +23,20 @@ public:
     QBAR_DISABLE_COPY_MOVE(PayloadBasePrivate)
 
 public:
-    explicit PayloadBasePrivate(PayloadBase *parent);
+    explicit PayloadBasePrivate(PayloadType idType, PayloadBase *parent);
     virtual ~PayloadBasePrivate();
 
+public:
+    void updateData();
+
 protected:
+    virtual BarError convert() = 0;
+
+protected:
+    PayloadType m_idType;
+    QByteArray m_data;
+    BarError m_lastErr;
+
     PayloadBase *q_ptr = nullptr;
 };
 

@@ -19,8 +19,8 @@ namespace qbar
 /* Functions implementation  */
 /*****************************/
 
-PayloadBasePrivate::PayloadBasePrivate(PayloadBase *parent)
-    : q_ptr(parent)
+PayloadBasePrivate::PayloadBasePrivate(PayloadType idType, PayloadBase *parent)
+    : m_idType(idType), m_lastErr(BarError::QBAR_ERR_NO_ERROR), q_ptr(parent)
 {
     /* Nothing to do */
 }
@@ -28,6 +28,14 @@ PayloadBasePrivate::PayloadBasePrivate(PayloadBase *parent)
 PayloadBasePrivate::~PayloadBasePrivate()
 {
     /* Nothing to do */
+}
+
+void PayloadBasePrivate::updateData()
+{
+    m_lastErr = convert();
+    if(m_lastErr != BarError::QBAR_ERR_NO_ERROR){
+        q_ptr->clear();
+    }
 }
 
 /*****************************/
