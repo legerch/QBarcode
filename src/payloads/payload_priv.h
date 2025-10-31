@@ -1,7 +1,7 @@
-#ifndef QBARCODE_PAYLOADBASE_PRIV_H
-#define QBARCODE_PAYLOADBASE_PRIV_H
+#ifndef QBARCODE_PAYLOAD_PRIV_H
+#define QBARCODE_PAYLOAD_PRIV_H
 
-#include "qbarcode/payloads/payloadbase.h"
+#include "qbarcode/payloads/payload.h"
 
 #include <QByteArray>
 
@@ -16,15 +16,15 @@ namespace qbar
 /* Class definitions         */
 /*****************************/
 
-class PayloadBasePrivate
+class PayloadPrivate
 {
 public:
-    Q_DECLARE_PUBLIC(PayloadBase)
-    QBAR_DISABLE_COPY_MOVE(PayloadBasePrivate)
+    Q_DECLARE_PUBLIC(Payload)
+    QBAR_DISABLE_COPY_MOVE(PayloadPrivate)
 
 public:
-    explicit PayloadBasePrivate(PayloadType idType, PayloadBase *parent);
-    virtual ~PayloadBasePrivate();
+    explicit PayloadPrivate(PayloadType idType, Payload *parent);
+    virtual ~PayloadPrivate();
 
 public:
     void updateData();
@@ -37,7 +37,7 @@ protected:
     QByteArray m_data;
     BarError m_lastErr;
 
-    PayloadBase *q_ptr = nullptr;
+    Payload *q_ptr = nullptr;
 };
 
 /*****************************/
@@ -58,4 +58,4 @@ protected:
 /* Qt specific meta-system   */
 /*****************************/
 
-#endif // QBARCODE_PAYLOADBASE_PRIV_H
+#endif // QBARCODE_PAYLOAD_PRIV_H

@@ -1,4 +1,4 @@
-#include "payloadbase_priv.h"
+#include "payload_priv.h"
 
 /*****************************/
 /* Class documentations      */
@@ -19,18 +19,18 @@ namespace qbar
 /* Functions implementation  */
 /*****************************/
 
-PayloadBasePrivate::PayloadBasePrivate(PayloadType idType, PayloadBase *parent)
+PayloadPrivate::PayloadPrivate(PayloadType idType, Payload *parent)
     : m_idType(idType), m_lastErr(BarError::QBAR_ERR_NO_ERROR), q_ptr(parent)
 {
     /* Nothing to do */
 }
 
-PayloadBasePrivate::~PayloadBasePrivate()
+PayloadPrivate::~PayloadPrivate()
 {
     /* Nothing to do */
 }
 
-void PayloadBasePrivate::updateData()
+void PayloadPrivate::updateData()
 {
     m_lastErr = convert();
     if(m_lastErr != BarError::QBAR_ERR_NO_ERROR){

@@ -1,6 +1,6 @@
 #include "qbarcode/payloads/payloadqrstring.h"
 
-#include "payloads/payloadbase_priv.h"
+#include "payloads/payload_priv.h"
 
 /*****************************/
 /* Class documentations      */
@@ -22,7 +22,7 @@ namespace qbar
 /*      Private Class        */
 /*****************************/
 
-class PayloadQrStringPrivate : public PayloadBasePrivate
+class PayloadQrStringPrivate : public PayloadPrivate
 {
     Q_DECLARE_PUBLIC(PayloadQrString)
     QBAR_DISABLE_COPY_MOVE(PayloadQrStringPrivate)
@@ -44,7 +44,7 @@ protected:
 /*****************************/
 
 PayloadQrStringPrivate::PayloadQrStringPrivate(PayloadQrString *parent)
-    : PayloadBasePrivate(PayloadType::PAYLOAD_TYPE_GENERIC_STRING, parent)
+    : PayloadPrivate(PayloadType::PAYLOAD_TYPE_GENERIC_STRING, parent)
 {
     /* Nothing to do */
 }
@@ -72,7 +72,7 @@ BarError PayloadQrStringPrivate::convert()
 /*****************************/
 
 PayloadQrString::PayloadQrString()
-    : PayloadBase(std::make_unique<PayloadQrStringPrivate>(this))
+    : Payload(std::make_unique<PayloadQrStringPrivate>(this))
 {
     /* Nothing to do */
 }

@@ -1,6 +1,6 @@
-#include "qbarcode/payloads/payloadbase.h"
+#include "qbarcode/payloads/payload.h"
 
-#include "payloads/payloadbase_priv.h"
+#include "payloads/payload_priv.h"
 
 /*****************************/
 /* Class documentations      */
@@ -22,21 +22,21 @@ namespace qbar
 /*      Public Class         */
 /*****************************/
 
-PayloadBase::PayloadBase(PayloadBase &&other) noexcept = default;
-PayloadBase& PayloadBase::operator=(PayloadBase &&other) noexcept = default;
+Payload::Payload(Payload &&other) noexcept = default;
+Payload& Payload::operator=(Payload &&other) noexcept = default;
 
-PayloadBase::PayloadBase(std::unique_ptr<PayloadBasePrivate> impl)
+Payload::Payload(std::unique_ptr<PayloadPrivate> impl)
     : d_ptr(std::move(impl))
 {
     /* Nothing to do */
 }
 
-PayloadBase::~PayloadBase()
+Payload::~Payload()
 {
     /* Nothing to do */
 }
 
-bool PayloadBase::isValid() const
+bool Payload::isValid() const
 {
     if(d_ptr->m_lastErr != BarError::QBAR_ERR_NO_ERROR){
         return false;
@@ -45,22 +45,22 @@ bool PayloadBase::isValid() const
     return !d_ptr->m_data.isEmpty();
 }
 
-PayloadType PayloadBase::getType() const
+PayloadType Payload::getType() const
 {
     return d_ptr->m_idType;
 }
 
-QByteArray PayloadBase::getData() const
+QByteArray Payload::getData() const
 {
     return d_ptr->m_data;
 }
 
-QString PayloadBase::getString() const
+QString Payload::getString() const
 {
     return QString::fromUtf8(getData());
 }
 
-void PayloadBase::clear()
+void Payload::clear()
 {
     d_ptr->m_data.clear();
 }

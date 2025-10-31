@@ -1,7 +1,7 @@
 #ifndef QBARCODE_PAYLOADQRSTRING_H
 #define QBARCODE_PAYLOADQRSTRING_H
 
-#include "qbarcode/payloads/payloadbase.h"
+#include "qbarcode/payloads/payload.h"
 
 /*****************************/
 /* Namespace instructions    */
@@ -15,7 +15,7 @@ namespace qbar
 /*****************************/
 
 class PayloadQrStringPrivate;
-class QBAR_EXPORT PayloadQrString : public PayloadBase
+class QBAR_EXPORT PayloadQrString : public Payload
 {
     QBAR_DISABLE_COPY(PayloadQrString)
 

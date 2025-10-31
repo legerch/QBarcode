@@ -1,5 +1,5 @@
-#ifndef QBARCODE_PAYLOADBASE_H
-#define QBARCODE_PAYLOADBASE_H
+#ifndef QBARCODE_PAYLOAD_H
+#define QBARCODE_PAYLOAD_H
 
 #include "qbarcode/qbartypes.h"
 #include <memory>
@@ -15,19 +15,19 @@ namespace qbar
 /* Class definitions         */
 /*****************************/
 
-class PayloadBasePrivate;
-class QBAR_EXPORT PayloadBase
+class PayloadPrivate;
+class QBAR_EXPORT Payload
 {
-    QBAR_DISABLE_COPY(PayloadBase)
+    QBAR_DISABLE_COPY(Payload)
 
 public:
-    PayloadBase(PayloadBase &&other) noexcept;
-    PayloadBase &operator=(PayloadBase &&) noexcept;
+    Payload(Payload &&other) noexcept;
+    Payload &operator=(Payload &&) noexcept;
 
-    virtual ~PayloadBase();
+    virtual ~Payload();
 
 protected:
-    explicit PayloadBase(std::unique_ptr<PayloadBasePrivate> impl);
+    explicit Payload(std::unique_ptr<PayloadPrivate> impl);
 
 public:
     bool isValid() const;
@@ -40,8 +40,8 @@ public:
     void clear();
 
 protected:
-    std::unique_ptr<PayloadBasePrivate> d_ptr;
-    Q_DECLARE_PRIVATE(PayloadBase)
+    std::unique_ptr<PayloadPrivate> d_ptr;
+    Q_DECLARE_PRIVATE(Payload)
 };
 
 /*****************************/
@@ -62,4 +62,4 @@ protected:
 /* Qt specific meta-system   */
 /*****************************/
 
-#endif // QBARCODE_PAYLOADBASE_H
+#endif // QBARCODE_PAYLOAD_H
