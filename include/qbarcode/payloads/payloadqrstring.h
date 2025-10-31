@@ -21,10 +21,15 @@ class QBAR_EXPORT PayloadQrString : public PayloadBase
 
 public:
     PayloadQrString();
+    PayloadQrString(const QString &data);
+
     PayloadQrString(PayloadQrString &&other) noexcept;
     PayloadQrString &operator=(PayloadQrString &&) noexcept;
 
     virtual ~PayloadQrString();
+
+public:
+    void setString(const QString &data);
 
 private:
     Q_DECLARE_PRIVATE(PayloadQrString)
