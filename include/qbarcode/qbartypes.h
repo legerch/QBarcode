@@ -19,6 +19,22 @@ namespace qbar
 /*****************************/
 
     /*!
+     * \brief List of all barcode related errors
+     *
+     * \sa barErrorToString()
+     */
+    enum class BarError
+    {
+        QBAR_ERR_NO_ERROR = 0,  /**< No error, operation succeed */
+        QBAR_ERR_UNKNOWN,       /**< Unknown error */
+
+        QBAR_ERR_ITEM_INVALID   /**< Operation cannot be performed due to an invalid item */
+    };
+    Q_ENUM_NS(BarError)
+
+    QBAR_EXPORT QString barErrorToString(BarError idErr);
+
+    /*!
      * \brief List of all supported barcode types
      *
      * \sa barTypeToString()
@@ -33,6 +49,19 @@ namespace qbar
 
     QBAR_EXPORT QString barTypeToString(BarType idType);
 
+    /*!
+     * \brief List of all types of payload
+     *
+     * \sa payloadTypeToString()
+     */
+    enum class PayloadType
+    {
+        PAYLOAD_TYPE_GENERIC_STRING = 0,
+    };
+    Q_ENUM_NS(PayloadType)
+
+    QBAR_EXPORT QString payloadTypeToString(PayloadType idType);
+
 /*****************************/
 /* Library methods           */
 /*****************************/
@@ -45,7 +74,20 @@ namespace qbar
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 
-// QHash inline enums
+inline uint qHash(qbar::BarError key, uint seed = 0)
+{
+    return ::qHash(static_cast<std::underlying_type<qbar::BarError>::type>(key), seed);
+}
+
+inline uint qHash(qbar::BarType key, uint seed = 0)
+{
+    return ::qHash(static_cast<std::underlying_type<qbar::BarType>::type>(key), seed);
+}
+
+inline uint qHash(qbar::PayloadType key, uint seed = 0)
+{
+    return ::qHash(static_cast<std::underlying_type<qbar::PayloadType>::type>(key), seed);
+}
 
 #endif
 
