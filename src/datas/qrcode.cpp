@@ -142,6 +142,24 @@ int QrCode::getVersion() const
     return d->m_version;
 }
 
+std::optional<QrCode> QrCode::create(const Payload &payload, QrLevelEcc idLevel)
+{
+    /* Set QrCode properties */
+    QrCode qrCode;
+    QrCodePrivate *impl = qrCode.d_func();
+
+    impl->setLevelEcc(idLevel);
+    impl->setPayload(payload);
+
+    /* Generate it */
+    const BarError idErr = impl->compute();
+    if(idErr != BarError::QBAR_ERR_NO_ERROR){
+        return std::nullopt;
+    }
+
+    return qrCode;
+}
+
 /*****************************/
 /* Qt specific methods       */
 /*****************************/
