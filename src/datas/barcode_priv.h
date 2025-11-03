@@ -29,6 +29,7 @@ protected:
 protected:
     BarType m_idType;
     std::unique_ptr<Payload> m_payload;
+    MatrixData m_matrix;
 
     Barcode *q_ptr = nullptr;
 };

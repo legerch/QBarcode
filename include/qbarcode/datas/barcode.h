@@ -30,6 +30,8 @@ public:
     BarType getType() const;
     const Payload* getPayload() const;
 
+    const MatrixData& getMatrixData() const;
+
 public:
     template<typename T>
     const T* getPayloadAs() const;

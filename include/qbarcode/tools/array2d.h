@@ -1,5 +1,5 @@
-#ifndef QBARCODE_ARRAY2D_H
-#define QBARCODE_ARRAY2D_H
+#ifndef QBARCODE_TOOLS_ARRAY2D_H
+#define QBARCODE_TOOLS_ARRAY2D_H
 
 #include <QVector>
 
@@ -245,4 +245,4 @@ const T& Array2D<T>::operator()(size_t row, size_t col) const
 /* Qt specific meta-system   */
 /*****************************/
 
-#endif // QBARCODE_ARRAY2D_H
+#endif // QBARCODE_TOOLS_ARRAY2D_H

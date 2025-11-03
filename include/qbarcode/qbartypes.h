@@ -2,6 +2,7 @@
 #define QBARCODE_QWLANTYPES_H
 
 #include "qbar_global.h"
+#include "tools/array2d.h"
 
 #include <QObject>
 #include <QVersionNumber>
@@ -16,6 +17,12 @@ namespace qbar
 
 /*****************************/
 /* Library types             */
+/*****************************/
+
+    using MatrixData = Array2D<uint8_t>;
+
+/*****************************/
+/* Library enums             */
 /*****************************/
 
     /*!
