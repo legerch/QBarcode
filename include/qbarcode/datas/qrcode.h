@@ -26,6 +26,9 @@ public:
 
     virtual ~QrCode();
 
+public:
+    QrLevelEcc getIdLevelEcc() const;
+
 private:
     Q_DECLARE_PRIVATE(QrCode)
 };

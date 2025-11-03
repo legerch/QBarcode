@@ -90,6 +90,30 @@ QString payloadTypeToString(PayloadType idType)
 }
 
 /*!
+ * \brief Use to convert QrCode level of error
+ * correction to string.
+ *
+ * \param[in] idLevel
+ * ECC level ID to convert. \n
+ * If unknown, string "unknown" will be returned.
+ *
+ * \return
+ * Returns string equivalent.
+ */
+QString qrLevelEccToString(QrLevelEcc idLevel)
+{
+    static const QHash<QrLevelEcc, QString> MAP_STR_LEVEL =
+    {
+        {QrLevelEcc::QR_ECC_LOW, "Low"},
+        {QrLevelEcc::QR_ECC_MEDIUM, "Medium"},
+        {QrLevelEcc::QR_ECC_QUARTILE, "Quartile"},
+        {QrLevelEcc::QR_ECC_HIGH, "High"},
+    };
+
+    return MAP_STR_LEVEL.value(idLevel, "Unknown");
+}
+
+/*!
  * \brief Used to retrieve \b QBarcode library
  * version.
  *

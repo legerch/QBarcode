@@ -30,6 +30,9 @@ class QrCodePrivate : public BarcodePrivate
 public:
     explicit QrCodePrivate(QrCode *parent);
     virtual ~QrCodePrivate();
+
+protected:
+    QrLevelEcc m_idLvlEcc;
 };
 
 /*****************************/
@@ -65,6 +68,12 @@ QrCode &QrCode::operator=(QrCode &&) noexcept = default;
 QrCode::~QrCode()
 {
     /* Nothing to do */
+}
+
+QrLevelEcc QrCode::getIdLevelEcc() const
+{
+    Q_D(const QrCode);
+    return d->m_idLvlEcc;
 }
 
 /*****************************/
