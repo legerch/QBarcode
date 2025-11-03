@@ -55,6 +55,9 @@ set(PROJECT_QT_PACKAGES
 
 ## Other library packages
 ### Example: find_package(nlohmann_json 3.11.3 REQUIRED)
+find_path(QRENCODE_INCLUDE_DIR NAMES qrencode.h)
+find_library(QRENCODE_LIBRARY_RELEASE qrencode)
+set(QRENCODE_LIBRARIES ${QRENCODE_LIBRARY_RELEASE})
 
 # Defines useful path variables for easier CMake configuration
 set(PROJECT_DIR_PUBLIC_HEADERS_ROOT "${PROJECT_SOURCE_DIR}/include")
@@ -88,6 +91,7 @@ set(PROJECT_LINKING_DIR
 ### Linking libs
 set(PROJECT_LINKING_LIB
     # Example: nlohmann_json::nlohmann_json
+    ${QRENCODE_LIBRARIES}
 )
 
 ## Set library files
@@ -106,6 +110,8 @@ set(PROJECT_HEADERS_PUBLIC
 
 ### Private
 set(PROJECT_HEADERS_PRIVATE
+    backend/typesqrencode.h
+
     datas/barcode_priv.h
 
     payloads/payload_priv.h
@@ -113,6 +119,8 @@ set(PROJECT_HEADERS_PRIVATE
 
 set(PROJECT_SOURCES
     qbartypes.cpp
+
+    backend/typesqrencode.cpp
 
     datas/barcode.cpp
     datas/barcode_priv.cpp
@@ -187,6 +195,7 @@ target_include_directories(${PROJECT_NAME}
         ${PROJECT_DIR_PUBLIC_HEADERS_ROOT}  # Only expose public headers
     PRIVATE
         ${PROJECT_DIR_PRIV_SOURCES}         # Internal headers, only for internal use
+        ${QRENCODE_INCLUDE_DIR}
 )
 
 # Do we need to build tests ?
