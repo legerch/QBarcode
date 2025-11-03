@@ -107,6 +107,8 @@ set(PROJECT_HEADERS_PRIVATE
     datas/barcode_priv.h
 
     payloads/payload_priv.h
+
+    tools/array2d.h
 )
 
 set(PROJECT_SOURCES
