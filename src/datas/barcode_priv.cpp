@@ -30,6 +30,11 @@ BarcodePrivate::~BarcodePrivate()
     /* Nothing to do */
 }
 
+void BarcodePrivate::setPayload(const Payload &payload)
+{
+    m_payload = std::make_unique<Payload>(payload);
+}
+
 /*****************************/
 /* Qt specific methods       */
 /*****************************/

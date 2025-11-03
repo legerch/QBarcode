@@ -24,6 +24,9 @@ public:
     virtual ~BarcodePrivate();
 
 protected:
+    void setPayload(const Payload &payload);
+
+protected:
     BarType m_idType;
     std::unique_ptr<Payload> m_payload;
 
