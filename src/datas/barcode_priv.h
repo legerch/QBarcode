@@ -25,6 +25,10 @@ public:
 
 protected:
     void setPayload(const Payload &payload);
+    BarError compute();
+
+protected:
+    virtual BarError generateMatrix() = 0;
 
 protected:
     BarType m_idType;

@@ -28,9 +28,14 @@ public:
 
 public:
     QrLevelEcc getIdLevelEcc() const;
+    int getVersion() const;
 
 private:
     Q_DECLARE_PRIVATE(QrCode)
+
+public:
+    static constexpr int VERSION_MIN = 1;
+    static constexpr int VERSION_MAX = 40;
 };
 
 /*****************************/
