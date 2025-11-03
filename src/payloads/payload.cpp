@@ -74,6 +74,11 @@ QString Payload::getString() const
     return QString::fromUtf8(getData());
 }
 
+BarError Payload::getLastError() const
+{
+    return d_ptr->m_lastErr;
+}
+
 void Payload::clear()
 {
     d_ptr->m_data.clear();

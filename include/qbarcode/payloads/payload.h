@@ -32,10 +32,12 @@ protected:
 
 public:
     bool isValid() const;
+
     PayloadType getType() const;
 
     QByteArray getData() const;
     QString getString() const;
+    BarError getLastError() const;
 
 public:
     void clear();
