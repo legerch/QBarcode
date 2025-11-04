@@ -1,6 +1,4 @@
-#include "qbarcode/payloads/payloadbase.h"
-
-#include "payloads/payloadbase_priv.h"
+#include "payload_priv.h"
 
 /*****************************/
 /* Class documentations      */
@@ -19,21 +17,32 @@ namespace qbar
 
 /*****************************/
 /* Functions implementation  */
-/*      Public Class         */
 /*****************************/
 
-PayloadBase::PayloadBase(PayloadBase &&other) noexcept = default;
-PayloadBase& PayloadBase::operator=(PayloadBase &&other) noexcept = default;
-
-PayloadBase::PayloadBase(std::unique_ptr<PayloadBasePrivate> impl)
-    : d_ptr(std::move(impl))
+PayloadPrivate::PayloadPrivate(PayloadType idType, Payload *parent)
+    : m_idType(idType), m_lastErr(BarError::QBAR_ERR_NO_ERROR), q_ptr(parent)
 {
     /* Nothing to do */
 }
 
-PayloadBase::~PayloadBase()
+PayloadPrivate::~PayloadPrivate()
 {
     /* Nothing to do */
+}
+
+void PayloadPrivate::updateData()
+{
+    m_lastErr = convert();
+    if(m_lastErr != BarError::QBAR_ERR_NO_ERROR){
+        q_ptr->clear();
+    }
+}
+
+void PayloadPrivate::copyBaseTo(PayloadPrivate *other) const
+{
+    other->m_idType = m_idType;
+    other->m_data = m_data;
+    other->m_lastErr = m_lastErr;
 }
 
 /*****************************/

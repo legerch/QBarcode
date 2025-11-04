@@ -30,6 +30,24 @@ BarcodePrivate::~BarcodePrivate()
     /* Nothing to do */
 }
 
+void BarcodePrivate::setPayload(const Payload &payload)
+{
+    m_payload = std::make_unique<Payload>(payload);
+}
+
+BarError BarcodePrivate::compute()
+{
+    /* Verify that payload is valid */
+    if(!m_payload->isValid()){
+        const BarError idErr = m_payload->getLastError();
+        qCritical("Unable to compute barcode, invalid payload [id-err: %d, sting: '%s']", QBAR_E2I(idErr), qUtf8Printable(m_payload->getString()));
+        return idErr;
+    }
+
+    /* Generate data matrix */
+    return generateMatrix();
+}
+
 /*****************************/
 /* Qt specific methods       */
 /*****************************/

@@ -24,7 +24,16 @@ public:
     virtual ~BarcodePrivate();
 
 protected:
+    void setPayload(const Payload &payload);
+    BarError compute();
+
+protected:
+    virtual BarError generateMatrix() = 0;
+
+protected:
     BarType m_idType;
+    std::unique_ptr<Payload> m_payload;
+    MatrixData m_matrix;
 
     Barcode *q_ptr = nullptr;
 };

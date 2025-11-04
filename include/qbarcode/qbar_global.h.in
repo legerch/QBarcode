@@ -124,6 +124,11 @@
 #   define QBAR_QTCOMPAT_STR_VIEW QAnyStringView
 #endif
 
+/**********************************
+ * Helpers
+ *********************************/
+#define QBAR_E2I(enumValue)     (static_cast<int>(enumValue))
+
 /*!
  * \endcond
  */

@@ -1,7 +1,9 @@
-#ifndef QBARCODE_PAYLOADQRSTRING_H
-#define QBARCODE_PAYLOADQRSTRING_H
+#ifndef QBARCODE_PAYLOAD_PRIV_H
+#define QBARCODE_PAYLOAD_PRIV_H
 
 #include "qbarcode/payloads/payload.h"
+
+#include <QByteArray>
 
 /*****************************/
 /* Namespace instructions    */
@@ -14,26 +16,34 @@ namespace qbar
 /* Class definitions         */
 /*****************************/
 
-class PayloadQrStringPrivate;
-class QBAR_EXPORT PayloadQrString : public Payload
+class PayloadPrivate
 {
 public:
-    PayloadQrString();
-    PayloadQrString(const QString &data);
-
-    PayloadQrString(const PayloadQrString &other);
-    PayloadQrString &operator=(const PayloadQrString &other);
-
-    PayloadQrString(PayloadQrString &&other) noexcept;
-    PayloadQrString &operator=(PayloadQrString &&) noexcept;
-
-    virtual ~PayloadQrString();
+    Q_DECLARE_PUBLIC(Payload)
+    QBAR_DISABLE_COPY_MOVE(PayloadPrivate)
 
 public:
-    void setString(const QString &data);
+    explicit PayloadPrivate(PayloadType idType, Payload *parent);
+    virtual ~PayloadPrivate();
 
-private:
-    Q_DECLARE_PRIVATE(PayloadQrString)
+public:
+    void updateData();
+
+protected:
+    void copyBaseTo(PayloadPrivate *other) const;
+
+public:
+    virtual std::unique_ptr<PayloadPrivate> clone(Payload *parent) const = 0;
+
+protected:
+    virtual BarError convert() = 0;
+
+protected:
+    PayloadType m_idType;
+    QByteArray m_data;
+    BarError m_lastErr;
+
+    Payload *q_ptr = nullptr;
 };
 
 /*****************************/
@@ -54,4 +64,4 @@ private:
 /* Qt specific meta-system   */
 /*****************************/
 
-#endif // QBARCODE_PAYLOADQRSTRING_H
+#endif // QBARCODE_PAYLOAD_PRIV_H

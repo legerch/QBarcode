@@ -29,6 +29,27 @@ namespace qbar
 /*****************************/
 
 /*!
+ * \brief Use to convert barcode errors to string.
+ *
+ * \param[in] idErr
+ * Error ID to convert. \n
+ * If unknown, string "unknown error" will be returned.
+ *
+ * \return
+ * Returns string equivalent.
+ */
+QString barErrorToString(BarError idErr)
+{
+    static const QHash<BarError, QString> MAP_STR_ERR =
+    {
+        {BarError::QBAR_ERR_NO_ERROR, "no error"},
+        {BarError::QBAR_ERR_ITEM_INVALID, "invalid item"},
+    };
+
+    return MAP_STR_ERR.value(idErr, "unknown error");
+}
+
+/*!
  * \brief Use to convert barcode types to string.
  *
  * \param[in] idType
@@ -46,6 +67,50 @@ QString barTypeToString(BarType idType)
     };
 
     return MAP_STR_TYPE.value(idType, "Unknown");
+}
+
+/*!
+ * \brief Use to convert payload types to string.
+ *
+ * \param[in] idType
+ * Payload type ID to convert. \n
+ * If unknown, string "unknown" will be returned.
+ *
+ * \return
+ * Returns string equivalent.
+ */
+QString payloadTypeToString(PayloadType idType)
+{
+    static const QHash<PayloadType, QString> MAP_STR_TYPE =
+    {
+        {PayloadType::PAYLOAD_TYPE_GENERIC_STRING, "String"},
+    };
+
+    return MAP_STR_TYPE.value(idType, "Unknown");
+}
+
+/*!
+ * \brief Use to convert QrCode level of error
+ * correction to string.
+ *
+ * \param[in] idLevel
+ * ECC level ID to convert. \n
+ * If unknown, string "unknown" will be returned.
+ *
+ * \return
+ * Returns string equivalent.
+ */
+QString qrLevelEccToString(QrLevelEcc idLevel)
+{
+    static const QHash<QrLevelEcc, QString> MAP_STR_LEVEL =
+    {
+        {QrLevelEcc::QR_ECC_LOW, "Low"},
+        {QrLevelEcc::QR_ECC_MEDIUM, "Medium"},
+        {QrLevelEcc::QR_ECC_QUARTILE, "Quartile"},
+        {QrLevelEcc::QR_ECC_HIGH, "High"},
+    };
+
+    return MAP_STR_LEVEL.value(idLevel, "Unknown");
 }
 
 /*!
