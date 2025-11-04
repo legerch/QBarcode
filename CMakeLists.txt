@@ -105,6 +105,8 @@ set(PROJECT_HEADERS_PUBLIC
     payloads/payload.h
     payloads/payloadqrstring.h
 
+    renderers/renderer.h
+
     tools/array2d.h
 )
 
@@ -115,6 +117,8 @@ set(PROJECT_HEADERS_PRIVATE
     datas/barcode_priv.h
 
     payloads/payload_priv.h
+
+    renderers/renderer_priv.h
 )
 
 set(PROJECT_SOURCES
@@ -129,6 +133,9 @@ set(PROJECT_SOURCES
     payloads/payload.cpp
     payloads/payload_priv.cpp
     payloads/payloadqrstring.cpp
+
+    renderers/renderer.cpp
+    renderers/renderer_priv.cpp
 )
 
 set(PROJECT_RESSOURCES
