@@ -22,6 +22,7 @@ class QBAR_EXPORT Renderer
     QBAR_DISABLE_COPY(Renderer)
 
 public:
+    Renderer();
     Renderer(Renderer &&other) noexcept;
     Renderer &operator=(Renderer &&) noexcept;
 

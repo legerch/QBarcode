@@ -24,6 +24,12 @@ namespace qbar
 /*      Public Class         */
 /*****************************/
 
+Renderer::Renderer()
+    : d_ptr(std::make_unique<RendererPrivate>(this))
+{
+    /* Nothing to do */
+}
+
 Renderer::Renderer(Renderer &&other) noexcept = default;
 Renderer& Renderer::operator=(Renderer &&other) noexcept = default;
 
