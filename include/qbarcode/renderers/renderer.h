@@ -35,6 +35,9 @@ public:
     void setSizeRequested(const QSize &size);
     void setMargins(const QMargins &margins);
 
+public:
+    QImage toImage(const Barcode &barcode);
+
 private:
     std::unique_ptr<RendererPrivate> d_ptr;
     Q_DECLARE_PRIVATE(Renderer)

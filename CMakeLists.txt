@@ -51,6 +51,7 @@ message(STATUS "Project \"${PROJECT_NAME}\" compiled with C++ standard ${CMAKE_C
 ## Qt packages
 set(PROJECT_QT_PACKAGES
     Core
+    Gui
 )
 
 ## Other library packages
