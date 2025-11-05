@@ -148,7 +148,7 @@ QSizeF QrCode::getRatio() const
     return ratio;
 }
 
-std::optional<QrCode> QrCode::create(const Payload &payload, QrLevelEcc idLevel)
+QrCode QrCode::create(const Payload &payload, QrLevelEcc idLevel)
 {
     /* Set QrCode properties */
     QrCode qrCode;
@@ -160,7 +160,7 @@ std::optional<QrCode> QrCode::create(const Payload &payload, QrLevelEcc idLevel)
     /* Generate it */
     const BarError idErr = impl->compute();
     if(idErr != BarError::QBAR_ERR_NO_ERROR){
-        return std::nullopt;
+        return QrCode();
     }
 
     return qrCode;

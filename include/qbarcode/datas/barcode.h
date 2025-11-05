@@ -28,6 +28,8 @@ public:
     virtual ~Barcode();
 
 public:
+    bool isValid() const;
+
     BarType getType() const;
     const Payload* getPayload() const;
 
