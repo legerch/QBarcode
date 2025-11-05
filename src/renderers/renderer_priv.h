@@ -24,6 +24,15 @@ public:
     virtual ~RendererPrivate();
 
 public:
+    bool computeSize(const Barcode &barcode);
+
+public:
+    QSize m_sizeReq;
+    QMargins m_margins;
+
+    QSize m_sizeOut;
+    int m_sizeModule;
+
     Renderer *q_ptr = nullptr;
 };
 

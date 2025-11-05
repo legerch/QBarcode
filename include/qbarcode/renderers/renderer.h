@@ -3,6 +3,8 @@
 
 #include "qbarcode/datas/barcode.h"
 
+#include <QImage>
+
 /*****************************/
 /* Namespace instructions    */
 /*****************************/
@@ -24,6 +26,14 @@ public:
     Renderer &operator=(Renderer &&) noexcept;
 
     virtual ~Renderer();
+
+public:
+    QSize getSizeRequested() const;
+    QMargins getMargins() const;
+
+public:
+    void setSizeRequested(const QSize &size);
+    void setMargins(const QMargins &margins);
 
 private:
     std::unique_ptr<RendererPrivate> d_ptr;
