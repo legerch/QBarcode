@@ -46,6 +46,11 @@ const Payload* Barcode::getPayload() const
     return d_ptr->m_payload.get();
 }
 
+QSize Barcode::getSize() const
+{
+    return d_ptr->m_matrix.getSize();
+}
+
 const MatrixData &Barcode::getMatrixData() const
 {
     return d_ptr->m_matrix;

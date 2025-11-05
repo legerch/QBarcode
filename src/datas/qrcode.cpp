@@ -142,6 +142,12 @@ int QrCode::getVersion() const
     return d->m_version;
 }
 
+QSizeF QrCode::getRatio() const
+{
+    static const QSizeF ratio(1.0, 1.0); // QrCode is always square, so ratio is 1:1
+    return ratio;
+}
+
 std::optional<QrCode> QrCode::create(const Payload &payload, QrLevelEcc idLevel)
 {
     /* Set QrCode properties */

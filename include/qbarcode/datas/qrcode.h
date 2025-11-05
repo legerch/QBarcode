@@ -30,6 +30,9 @@ public:
     QrLevelEcc getIdLevelEcc() const;
     int getVersion() const;
 
+public:
+    virtual QSizeF getRatio() const override;
+
 private:
     Q_DECLARE_PRIVATE(QrCode)
 
