@@ -1,6 +1,7 @@
 #ifndef QBARCODE_TOOLS_ARRAY2D_H
 #define QBARCODE_TOOLS_ARRAY2D_H
 
+#include <QSize>
 #include <QVector>
 
 //TODO: doc (extracted from toolboxqt lib)
@@ -26,7 +27,8 @@ public:
 public:
     size_t getRows() const;
     size_t getCols() const;
-    size_t getSize() const;
+    size_t getNbElements() const;
+    QSize getSize() const;
 
 public:
     void clear();
@@ -93,7 +95,8 @@ Array2D<T>::Array2D()
  * \return
  * Returns number of rows available
  *
- * \sa getCols(), getSize()
+ * \sa getCols()
+ * \sa getSize(), getNbElements()
  */
 template<typename T>
 size_t Array2D<T>::getRows() const
@@ -107,7 +110,8 @@ size_t Array2D<T>::getRows() const
  * \return
  * Returns number of columns available
  *
- * \sa getRows(), getSize()
+ * \sa getRows()
+ * \sa getSize(), getNbElements()
  */
 template<typename T>
 size_t Array2D<T>::getCols() const
@@ -116,18 +120,33 @@ size_t Array2D<T>::getCols() const
 }
 
 /*!
- * \brief Get total size of 2D array (a.k.a number
- * of elements)
+ * \brief Get number of elements of 2D array
  *
  * \return
  * Returns number of elements
  *
  * \sa getRows(), getCols()
+ * \sa getSize()
  */
 template<typename T>
-size_t Array2D<T>::getSize() const
+inline size_t Array2D<T>::getNbElements() const
 {
     return m_rows * m_cols;
+}
+
+/*!
+ * \brief Get matrix size
+ *
+ * \return
+ * Returns matrix size
+ *
+ * \sa getRows(), getCols()
+ * \sa getNbElements()
+ */
+template<typename T>
+QSize Array2D<T>::getSize() const
+{
+    return QSize(m_cols, m_rows);
 }
 
 /*!
