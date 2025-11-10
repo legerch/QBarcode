@@ -51,6 +51,7 @@ message(STATUS "Project \"${PROJECT_NAME}\" compiled with C++ standard ${CMAKE_C
 ## Qt packages
 set(PROJECT_QT_PACKAGES
     Core
+    Gui
 )
 
 ## Other library packages
@@ -105,6 +106,9 @@ set(PROJECT_HEADERS_PUBLIC
     payloads/payload.h
     payloads/payloadqrstring.h
 
+    renderers/renderer.h
+    renderers/rendererqrcode.h
+
     tools/array2d.h
 )
 
@@ -115,6 +119,8 @@ set(PROJECT_HEADERS_PRIVATE
     datas/barcode_priv.h
 
     payloads/payload_priv.h
+
+    renderers/renderer_priv.h
 )
 
 set(PROJECT_SOURCES
@@ -129,6 +135,10 @@ set(PROJECT_SOURCES
     payloads/payload.cpp
     payloads/payload_priv.cpp
     payloads/payloadqrstring.cpp
+
+    renderers/renderer.cpp
+    renderers/renderer_priv.cpp
+    renderers/rendererqrcode.cpp
 )
 
 set(PROJECT_RESSOURCES

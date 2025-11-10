@@ -30,6 +30,9 @@ public:
     QrLevelEcc getIdLevelEcc() const;
     int getVersion() const;
 
+public:
+    virtual QSizeF getRatio() const override;
+
 private:
     Q_DECLARE_PRIVATE(QrCode)
 
@@ -38,7 +41,7 @@ public:
     static constexpr int VERSION_MAX = 40;
 
 public:
-    static std::optional<QrCode> create(const Payload &payload, QrLevelEcc idLevel);
+    static QrCode create(const Payload &payload, QrLevelEcc idLevel);
 };
 
 /*****************************/

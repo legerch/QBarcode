@@ -3,6 +3,7 @@
 
 #include "qbarcode/payloads/payload.h"
 #include <memory>
+#include <QSize>
 
 /*****************************/
 /* Namespace instructions    */
@@ -27,10 +28,16 @@ public:
     virtual ~Barcode();
 
 public:
+    bool isValid() const;
+
     BarType getType() const;
     const Payload* getPayload() const;
 
+    QSize getSize() const;
     const MatrixData& getMatrixData() const;
+
+public:
+    virtual QSizeF getRatio() const = 0;
 
 public:
     template<typename T>
