@@ -31,10 +31,14 @@ public:
 public:
     QSize getSizeRequested() const;
     QMargins getMargins() const;
+    QColor getColorBackground() const;
+    QColor getColorForeground() const;
 
 public:
     void setSizeRequested(const QSize &size);
     void setMargins(const QMargins &margins);
+    void setColorBackground(const QColor &color);
+    void setColorForeground(const QColor &color);
 
 public:
     QImage toImage(const Barcode &barcode);

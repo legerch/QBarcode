@@ -48,6 +48,16 @@ QMargins Renderer::getMargins() const
     return d_ptr->m_margins;
 }
 
+QColor Renderer::getColorBackground() const
+{
+    return d_ptr->m_colorBg;
+}
+
+QColor Renderer::getColorForeground() const
+{
+    return d_ptr->m_colorFg;
+}
+
 void Renderer::setSizeRequested(const QSize &size)
 {
     d_ptr->m_sizeReq = size;
@@ -58,8 +68,16 @@ void Renderer::setMargins(const QMargins &margins)
     d_ptr->m_margins = margins;
 }
 
-//TODO: extract painter part
-//TODO: extract colors properties
+void Renderer::setColorBackground(const QColor &color)
+{
+    d_ptr->m_colorBg = color;
+}
+
+void Renderer::setColorForeground(const QColor &color)
+{
+    d_ptr->m_colorFg = color;
+}
+
 QImage Renderer::toImage(const Barcode &barcode)
 {
     /* Compute size */

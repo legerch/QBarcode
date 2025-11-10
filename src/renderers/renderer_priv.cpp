@@ -21,8 +21,9 @@ namespace qbar
 /* Functions implementation  */
 /*****************************/
 
-RendererPrivate::RendererPrivate(Renderer *parent)
-    : q_ptr(parent)
+RendererPrivate::RendererPrivate(Renderer *parent) :
+    m_colorBg(Qt::white), m_colorFg(Qt::black),
+    q_ptr(parent)
 {
     /* Nothing to do */
 }

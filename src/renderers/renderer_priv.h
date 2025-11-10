@@ -30,6 +30,9 @@ public:
     QSize m_sizeReq;
     QMargins m_margins;
 
+    QColor m_colorBg;
+    QColor m_colorFg;
+
     QSize m_sizeOut;
     int m_sizeModule;
 
