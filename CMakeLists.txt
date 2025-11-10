@@ -106,6 +106,7 @@ set(PROJECT_HEADERS_PUBLIC
     payloads/payload.h
     payloads/payloadqrstring.h
     payloads/payloadqrurl.h
+    payloads/payloadqrwifi.h
 
     renderers/renderer.h
     renderers/rendererqrcode.h
@@ -137,6 +138,7 @@ set(PROJECT_SOURCES
     payloads/payload_priv.cpp
     payloads/payloadqrstring.cpp
     payloads/payloadqrurl.cpp
+    payloads/payloadqrwifi.cpp
 
     renderers/renderer.cpp
     renderers/renderer_priv.cpp

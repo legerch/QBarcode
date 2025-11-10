@@ -66,6 +66,7 @@ namespace qbar
         PAYLOAD_TYPE_GENERIC_STRING = 0,
 
         PAYLOAD_TYPE_QR_URL,
+        PAYLOAD_TYPE_QR_WIFI,
     };
     Q_ENUM_NS(PayloadType)
 
