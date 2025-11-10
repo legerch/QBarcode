@@ -3,6 +3,7 @@
 #include "payloads/payload_priv.h"
 
 #include <QHash>
+#include <QSet>
 
 /*****************************/
 /* Class documentations      */
@@ -38,6 +39,9 @@ public:
 
 protected:
     virtual BarError convert() override;
+
+private:
+    QString escapeCharsMecard(const QString &string);
 
 protected:
     PayloadQrWifi::SecurityType m_idSecurity;
@@ -80,19 +84,56 @@ std::unique_ptr<PayloadPrivate> PayloadQrWifiPrivate::clone(Payload *parent) con
 
 BarError PayloadQrWifiPrivate::convert()
 {
-    //TODO: implement
-    return BarError::QBAR_ERR_ITEM_INVALID;
-
-#if 0
-    /* Verify that string is valid */
-    if(m_string.isEmpty()){
+    /* Verify that mandatory fields are set */
+    if(m_ssid.isEmpty()){
         return BarError::QBAR_ERR_ITEM_INVALID;
     }
 
+    /* Create data to encode */
+    // Security type + SSID
+    QString strWifi = QStringLiteral("WIFI:T:%1;S:%2;").arg(
+        PayloadQrWifi::securityTypeToString(m_idSecurity),
+        escapeCharsMecard(m_ssid)
+    );
+
+    // Password
+    if(m_idSecurity != PayloadQrWifi::SecurityType::NO_SECURITY){
+        strWifi.append(QStringLiteral("P:%1;").arg(escapeCharsMecard(m_passwd)));
+    }
+
+    // Is it an hidden network ?
+    if(m_isHidden){
+        strWifi.append(QStringLiteral("H:true;"));
+    }
+
+    // End
+    strWifi.append(QStringLiteral(";"));
+
     /* Perform UTF-8 conversion */
-    m_data = m_string.toUtf8();
+    m_data = strWifi.toUtf8();
     return BarError::QBAR_ERR_NO_ERROR;
-#endif
+}
+
+//TODO: doc
+// https://github.com/zxing/zxing/wiki/Barcode-Contents#wi-fi-network-config-android-ios-11
+QString PayloadQrWifiPrivate::escapeCharsMecard(const QString &string)
+{
+    /* Define characters to escape */
+    static const QSet<QChar> TO_ESCAPE = {
+        QChar('\\'), QChar(';'), QChar(','), QChar('"'), QChar('\''), QChar(':')
+    };
+
+    /* Recreate the string */
+    QString fmt;
+    for(const QChar &c : string){
+        if(TO_ESCAPE.contains(c)){
+            fmt.append(QChar('\\')); // Put backslash before adding the character
+        }
+
+        fmt.append(c);
+    }
+
+    return fmt;
 }
 
 /*****************************/
