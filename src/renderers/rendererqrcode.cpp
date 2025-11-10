@@ -62,7 +62,7 @@ QImage RendererQrCodePrivate::renderToImage(const Barcode &barcode)
     }
 
     /* Initialize image */
-    QImage img(m_sizeOut, QImage::Format_ARGB32);
+    QImage img(m_sizeOut, QImage::Format_RGB32);
     img.fill(m_colorBg);
 
     /* Prepare painter to use */
