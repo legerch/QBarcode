@@ -120,6 +120,18 @@ PayloadQrWifi::~PayloadQrWifi()
     /* Nothing to do */
 }
 
+QString PayloadQrWifi::securityTypeToString(SecurityType idSecurity)
+{
+    static const QHash<SecurityType, QString> MAP_SEC_TO_STR =
+    {
+        {SecurityType::NO_SECURITY, "nopass"},
+        {SecurityType::WEP, "WEP"},
+        {SecurityType::WPA, "WPA"}
+    };
+
+    return MAP_SEC_TO_STR.value(idSecurity, "unknown");
+}
+
 /*****************************/
 /* Qt specific methods       */
 /*****************************/

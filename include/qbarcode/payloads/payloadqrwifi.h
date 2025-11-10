@@ -18,6 +18,15 @@ class PayloadQrWifiPrivate;
 class QBAR_EXPORT PayloadQrWifi : public Payload
 {
 public:
+    enum class SecurityType
+    {
+        NO_SECURITY = 0,
+        WEP,
+        WPA,
+    };
+    Q_ENUM(SecurityType);
+
+public:
     PayloadQrWifi();
 
     PayloadQrWifi(const PayloadQrWifi &other);
@@ -27,6 +36,9 @@ public:
     PayloadQrWifi &operator=(PayloadQrWifi &&) noexcept;
 
     virtual ~PayloadQrWifi();
+
+public:
+    static QString securityTypeToString(SecurityType idSecurity);
 
 private:
     Q_DECLARE_PRIVATE(PayloadQrWifi)
