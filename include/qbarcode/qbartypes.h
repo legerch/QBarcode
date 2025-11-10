@@ -64,6 +64,8 @@ namespace qbar
     enum class PayloadType
     {
         PAYLOAD_TYPE_GENERIC_STRING = 0,
+
+        PAYLOAD_TYPE_QR_URL,
     };
     Q_ENUM_NS(PayloadType)
 
