@@ -38,6 +38,18 @@ public:
     virtual ~PayloadQrWifi();
 
 public:
+    SecurityType getSecurityType() const;
+    QString getSsid() const;
+    QString getPassword() const;
+    bool isHidden() const;
+
+public:
+    void setSecurityType(SecurityType idSecurity);
+    void setSsid(const QString &ssid);
+    void setPassword(const QString &passwd);
+    void setIsHidden(bool isHidden);
+
+public:
     static QString securityTypeToString(SecurityType idSecurity);
 
 private:

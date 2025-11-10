@@ -38,6 +38,12 @@ public:
 
 protected:
     virtual BarError convert() override;
+
+protected:
+    PayloadQrWifi::SecurityType m_idSecurity;
+    QString m_ssid;
+    QString m_passwd;
+    bool m_isHidden;
 };
 
 /*****************************/
@@ -45,8 +51,9 @@ protected:
 /*      Private Class        */
 /*****************************/
 
-PayloadQrWifiPrivate::PayloadQrWifiPrivate(Payload *parent)
-    : PayloadPrivate(PayloadType::PAYLOAD_TYPE_GENERIC_STRING, parent)
+PayloadQrWifiPrivate::PayloadQrWifiPrivate(Payload *parent) :
+    PayloadPrivate(PayloadType::PAYLOAD_TYPE_GENERIC_STRING, parent),
+    m_idSecurity(PayloadQrWifi::SecurityType::WPA), m_isHidden(false)
 {
     /* Nothing to do */
 }
@@ -63,8 +70,10 @@ std::unique_ptr<PayloadPrivate> PayloadQrWifiPrivate::clone(Payload *parent) con
     copyBaseTo(copy.get());
 
     /* Copy child members */
-    //TODO: set
-    //copy->m_string = m_string;
+    copy->m_idSecurity = m_idSecurity;
+    copy->m_ssid = m_ssid;
+    copy->m_passwd = m_passwd;
+    copy->m_isHidden = m_isHidden;
 
     return copy;
 }
@@ -118,6 +127,62 @@ PayloadQrWifi &PayloadQrWifi::operator=(PayloadQrWifi &&) noexcept = default;
 PayloadQrWifi::~PayloadQrWifi()
 {
     /* Nothing to do */
+}
+
+PayloadQrWifi::SecurityType PayloadQrWifi::getSecurityType() const
+{
+    Q_D(const PayloadQrWifi);
+    return d->m_idSecurity;
+}
+
+QString PayloadQrWifi::getSsid() const
+{
+    Q_D(const PayloadQrWifi);
+    return d->m_ssid;
+}
+
+QString PayloadQrWifi::getPassword() const
+{
+    Q_D(const PayloadQrWifi);
+    return d->m_passwd;
+}
+
+bool PayloadQrWifi::isHidden() const
+{
+    Q_D(const PayloadQrWifi);
+    return d->m_isHidden;
+}
+
+void PayloadQrWifi::setSecurityType(SecurityType idSecurity)
+{
+    Q_D(PayloadQrWifi);
+
+    d->m_idSecurity = idSecurity;
+    d->updateData();
+}
+
+void PayloadQrWifi::setSsid(const QString &ssid)
+{
+    Q_D(PayloadQrWifi);
+
+    d->m_ssid = ssid;
+    d->updateData();
+}
+
+void PayloadQrWifi::setPassword(const QString &passwd)
+{
+    Q_D(PayloadQrWifi);
+
+    d->m_passwd = passwd;
+    d->updateData();
+}
+
+void PayloadQrWifi::setIsHidden(bool isHidden)
+{
+    Q_D(PayloadQrWifi);
+
+    d->m_isHidden = isHidden;
+    d->updateData();
 }
 
 QString PayloadQrWifi::securityTypeToString(SecurityType idSecurity)
