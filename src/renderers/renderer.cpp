@@ -2,8 +2,6 @@
 
 #include "renderer_priv.h"
 
-#include <QPainter>
-
 /*****************************/
 /* Class documentations      */
 /*****************************/
@@ -24,14 +22,14 @@ namespace qbar
 /*      Public Class         */
 /*****************************/
 
-Renderer::Renderer()
-    : d_ptr(std::make_unique<RendererPrivate>(this))
+Renderer::Renderer(Renderer &&other) noexcept = default;
+Renderer& Renderer::operator=(Renderer &&other) noexcept = default;
+
+Renderer::Renderer(std::unique_ptr<RendererPrivate> impl)
+    : d_ptr(std::move(impl))
 {
     /* Nothing to do */
 }
-
-Renderer::Renderer(Renderer &&other) noexcept = default;
-Renderer& Renderer::operator=(Renderer &&other) noexcept = default;
 
 Renderer::~Renderer()
 {
@@ -80,43 +78,7 @@ void Renderer::setColorForeground(const QColor &color)
 
 QImage Renderer::toImage(const Barcode &barcode)
 {
-    /* Compute size */
-    bool succeed = d_ptr->computeSize(barcode);
-    if(!succeed){
-        return QImage();
-    }
-
-    /* Initialize image */
-    QImage img(d_ptr->m_sizeOut, QImage::Format_ARGB32);
-    img.fill(Qt::white);
-
-    /* Prepare painter to use */
-    QPainter painter(&img);
-    painter.setBrush(Qt::black);
-    painter.setPen(Qt::NoPen); // Do not draw boundary lines. See https://doc.qt.io/qt-6/qt.html#PenStyle-enum
-
-    /* Draw modules */
-    const MatrixData &matrixData = barcode.getMatrixData();
-
-    const int nbRows = matrixData.getRows();
-    const int nbCols = matrixData.getCols();
-    const int sizeMod = d_ptr->m_sizeModule;
-
-    for(int y = 0; y < nbRows; ++y){
-        for(int x = 0; x < nbCols; ++x){
-            if(matrixData(y, x) == 1){
-                const QRect mod(
-                    d_ptr->m_margins.left() + x * sizeMod,
-                    d_ptr->m_margins.top() + y * sizeMod,
-                    sizeMod, sizeMod
-                );
-
-                painter.drawRect(mod);
-            }
-        }
-    }
-
-    return img;
+    return d_ptr->renderToImage(barcode);
 }
 
 /*****************************/

@@ -107,6 +107,7 @@ set(PROJECT_HEADERS_PUBLIC
     payloads/payloadqrstring.h
 
     renderers/renderer.h
+    renderers/rendererqrcode.h
 
     tools/array2d.h
 )
@@ -137,6 +138,7 @@ set(PROJECT_SOURCES
 
     renderers/renderer.cpp
     renderers/renderer_priv.cpp
+    renderers/rendererqrcode.cpp
 )
 
 set(PROJECT_RESSOURCES

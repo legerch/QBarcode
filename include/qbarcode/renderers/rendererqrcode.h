@@ -1,5 +1,5 @@
-#ifndef QBARCODE_RENDERERPRIVATE_H
-#define QBARCODE_RENDERERPRIVATE_H
+#ifndef QBARCODE_RENDERERQRCODE_H
+#define QBARCODE_RENDERERQRCODE_H
 
 #include "qbarcode/renderers/renderer.h"
 
@@ -14,32 +14,20 @@ namespace qbar
 /* Class definitions         */
 /*****************************/
 
-class RendererPrivate
+class RendererQrCodePrivate;
+class QBAR_EXPORT RendererQrCode : public Renderer
 {
-    Q_DECLARE_PUBLIC(Renderer)
-    QBAR_DISABLE_COPY_MOVE(RendererPrivate)
+    QBAR_DISABLE_COPY(RendererQrCode)
 
 public:
-    explicit RendererPrivate(Renderer *parent);
-    virtual ~RendererPrivate();
+    RendererQrCode();
+    RendererQrCode(RendererQrCode &&other) noexcept;
+    RendererQrCode &operator=(RendererQrCode &&) noexcept;
 
-protected:
-    bool computeSize(const Barcode &barcode);
+    virtual ~RendererQrCode();
 
-protected:
-    virtual QImage renderToImage(const Barcode &barcode) = 0;
-
-protected:
-    QSize m_sizeReq;
-    QMargins m_margins;
-
-    QColor m_colorBg;
-    QColor m_colorFg;
-
-    QSize m_sizeOut;
-    int m_sizeModule;
-
-    Renderer *q_ptr = nullptr;
+private:
+    Q_DECLARE_PRIVATE(RendererQrCode)
 };
 
 /*****************************/
@@ -60,4 +48,4 @@ protected:
 /* Qt specific meta-system   */
 /*****************************/
 
-#endif // QBARCODE_RENDERERPRIVATE_H
+#endif // QBARCODE_RENDERERQRCODE_H

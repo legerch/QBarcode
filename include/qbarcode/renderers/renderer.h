@@ -22,7 +22,6 @@ class QBAR_EXPORT Renderer
     QBAR_DISABLE_COPY(Renderer)
 
 public:
-    Renderer();
     Renderer(Renderer &&other) noexcept;
     Renderer &operator=(Renderer &&) noexcept;
 
@@ -43,7 +42,10 @@ public:
 public:
     QImage toImage(const Barcode &barcode);
 
-private:
+protected:
+    explicit Renderer(std::unique_ptr<RendererPrivate> impl);
+
+protected:
     std::unique_ptr<RendererPrivate> d_ptr;
     Q_DECLARE_PRIVATE(Renderer)
 };
