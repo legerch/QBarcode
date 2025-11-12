@@ -98,6 +98,10 @@ BarError PayloadQrWifiPrivate::convert()
 
     // Password
     if(m_idSecurity != PayloadQrWifi::SecurityType::NO_SECURITY){
+        if(m_passwd.isEmpty()){
+            return BarError::QBAR_ERR_ITEM_INVALID;
+        }
+
         strWifi.append(QStringLiteral("P:%1;").arg(escapeCharsMecard(m_passwd)));
     }
 
