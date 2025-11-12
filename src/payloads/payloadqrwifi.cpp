@@ -56,7 +56,7 @@ protected:
 /*****************************/
 
 PayloadQrWifiPrivate::PayloadQrWifiPrivate(Payload *parent) :
-    PayloadPrivate(PayloadType::PAYLOAD_TYPE_GENERIC_STRING, parent),
+    PayloadPrivate(PayloadType::PAYLOAD_TYPE_QR_WIFI, parent),
     m_idSecurity(PayloadQrWifi::SecurityType::WPA), m_isHidden(false)
 {
     /* Nothing to do */

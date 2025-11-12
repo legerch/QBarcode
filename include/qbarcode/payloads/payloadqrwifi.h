@@ -23,6 +23,8 @@ public:
         NO_SECURITY = 0,
         WEP,
         WPA,
+
+        NB_SECURITY_TYPE
     };
     Q_ENUM(SecurityType);
 
