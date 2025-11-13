@@ -84,6 +84,9 @@ QString payloadTypeToString(PayloadType idType)
     static const QHash<PayloadType, QString> MAP_STR_TYPE =
     {
         {PayloadType::PAYLOAD_TYPE_GENERIC_STRING, "String"},
+
+        {PayloadType::PAYLOAD_TYPE_QR_URL, "QrCode URL"},
+        {PayloadType::PAYLOAD_TYPE_QR_WIFI, "QrCode WIFI"},
     };
 
     return MAP_STR_TYPE.value(idType, "Unknown");

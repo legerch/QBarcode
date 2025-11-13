@@ -50,7 +50,9 @@ namespace qbar
     {
         QBAR_TYPE_UNKNOWN = 0,  /**< Unknown/unsupported barcode type */
 
-        QBAR_TYPE_QRCODE        /**< QrCode type */
+        QBAR_TYPE_QRCODE,       /**< QrCode type */
+
+        QBAR_TYPE_NB            /**< Number of supporter barcode types */
     };
     Q_ENUM_NS(BarType)
 
@@ -66,6 +68,9 @@ namespace qbar
         PAYLOAD_TYPE_GENERIC_STRING = 0,
 
         PAYLOAD_TYPE_QR_URL,
+        PAYLOAD_TYPE_QR_WIFI,
+
+        PAYLOAD_TYPE_NB
     };
     Q_ENUM_NS(PayloadType)
 
