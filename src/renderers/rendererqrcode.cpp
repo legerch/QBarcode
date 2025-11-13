@@ -8,6 +8,12 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class qbar::RendererQrCode
+ *
+ * \brief Represent a QrCode renderer
+ */
+
 /*****************************/
 /* Signals documentations    */
 /*****************************/

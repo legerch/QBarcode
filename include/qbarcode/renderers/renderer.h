@@ -42,12 +42,17 @@ public:
 public:
     QImage toImage(const Barcode &barcode);
 
+/*! \cond INTERNAL */
+
 protected:
     explicit Renderer(std::unique_ptr<RendererPrivate> impl);
 
 protected:
     std::unique_ptr<RendererPrivate> d_ptr;
     Q_DECLARE_PRIVATE(Renderer)
+
+/*! \endcond */
+
 };
 
 /*****************************/
