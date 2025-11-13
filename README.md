@@ -1,4 +1,4 @@
-[QBarcode][repo-home] is a Qt library allowing to read and generate barcodes.
+[QBarcode][repo-home] is a Qt library allowing to generate barcodes.
 
 > [!TIP]
 > Latest development/pull requests will be committed into `main` branch.  
@@ -10,16 +10,11 @@
 **Table of contents :**
 - [1. Library details](#1-library-details)
   - [1.1. Features](#11-features)
-  - [Supported barcodes](#supported-barcodes)
-  - [1.2. Supported platforms](#12-supported-platforms)
-    - [1.2.1. Status](#121-status)
-    - [1.2.2. Specific behaviours](#122-specific-behaviours)
 - [2. Requirements](#2-requirements)
   - [2.1. C++ Standards](#21-c-standards)
   - [2.2. Dependencies](#22-dependencies)
 - [3. How to build](#3-how-to-build)
   - [3.1. CMake Usage](#31-cmake-usage)
-  - [3.2. CMake options](#32-cmake-options)
 - [4. How to use](#4-how-to-use)
   - [4.1. Usage](#41-usage)
   - [4.2. Library version](#42-library-version)
@@ -32,21 +27,25 @@
 # 1. Library details
 ## 1.1. Features
 
-- _Provide library details here_
-- _Provide informations about available and unavailable features (what can be do, what can't)_
+This cross platform library allow to generate multiple types of barcodes and render those in different format.  
+We have three "main" classes:
+- `qbar::Payload`: This class store only **datas** to use, representing _what we have to encode_.
+- `qbar::Barcode`: This is the base class of all barcodes types, responsible of building the barcode matrix. It don't manage encoding and don't manage appearance.
+- `qbar::Renderer`: This class allow to render barcodes (size, margins, colors, etc...) and only responsible of _how does it look ?_
 
-## Supported barcodes
+> [!NOTE]
+> Custom application [QBarcodeApp][qbarcodeapp-repo] is available and used as a demo application to discover how this library can be used.
 
-- _Provide barcodes types details_
+What types of barcodes are currently supported:
 
-## 1.2. Supported platforms
-### 1.2.1. Status
+| Type of barcode | Barcode class | Rendering class | Supported payloads |
+|:-:|:-:|:-:|:-:|
+| [QrCode][qrcode-doc] | `qbar::QrCode` | `qbar::RendererQrCode` | - String<br>- URL<br>- Wifi |
 
-- _Useful if cross-platform to track current implementation status or the supported/planned/rejected backend_
-
-### 1.2.2. Specific behaviours
-
-- _Because sometimes you can't escape some specific platforms/versions quirks_
+> [!NOTE]
+> 🕚 Currently planned: 🕚
+> - More QrCode payload: geo, phone contact, etc...
+> - More barcodes types: EAN-13
 
 # 2. Requirements
 ## 2.1. C++ Standards
@@ -59,7 +58,7 @@ Below, list of required dependencies:
 
 | Dependencies | VCPKG package | Comments |
 |:-:|:-:|:-:|
-| [Qt][qt-official] | / | Compatible with **Qt6.x**<b>Compatible with **Qt5.15.x** |
+| [Qt][qt-official] | / | Compatible with **Qt6.x**<br>Compatible with **Qt5.15.x** |
 | [libqrencode][lib-qrencode-repo] | `libqrencode` | / |
 
 > [!NOTE]
@@ -80,17 +79,10 @@ add_subdirectory(qbarcode) # Or if library is put in a folder "dependencies" : a
 target_link_libraries(${PROJECT_NAME} PRIVATE qbarcode)
 ```
 
-## 3.2. CMake options
-
-This library provide some **CMake** build options:
-- _add here your custom CMake library options, for each, add: the name, the default value, when to use and what consequences_
-
 # 4. How to use
 ## 4.1. Usage
 
-_An "usage" section example_
-
-Please refer to `myns::MyClass` class documentation for more details.
+Please refer to the [list of classes][dox-class-list] documentation for more details.
 
 ## 4.2. Library version
 ### 4.2.1. Compatibility
@@ -113,7 +105,7 @@ In order to easily check at compilation time library version (to manage compatib
 
 Since library header used during final application build could differ from the actual library version, it is recommended to use the method:
 ```cpp
-#include "libraryname/someheader.h"
+#include "qbarcode/qbartypes.h"
 
 const QVersionNumber libSemver = qwm::getLibraryVersion();
 ```
@@ -142,6 +134,9 @@ This library is licensed under [MIT license][repo-license-url].
 [anchor-platforms]: #12-supported-platforms
 [anchor-cmake-opts]: #32-cmake-options
 
+<!-- Doxygen links -->
+[dox-class-list]: annotated.html
+
 <!-- Links of this repository -->
 [repo-home]: https://github.com/legerch/QBarcode
 [repo-doc-web]: https://legerch.github.io/QBarcode/
@@ -153,6 +148,8 @@ This library is licensed under [MIT license][repo-license-url].
 
 [gtest-repo]: https://github.com/google/googletest
 [lib-qrencode-repo]: https://github.com/fukuchi/libqrencode
+[qbarcodeapp-repo]: https://github.com/legerch/QBarcodeApp
+[qrcode-doc]: https://en.wikipedia.org/wiki/QR_code
 [qt-official]: https://www.qt.io/
 
 [vcpkg-tutorial]: https://github.com/legerch/develop-memo/tree/master/Toolchains/Build%20systems/VCPKG
