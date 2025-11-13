@@ -8,6 +8,15 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class qbar::PayloadQrUrl
+ *
+ * \brief Store QrCode URL data
+ * \details
+ * URL data will be properly encoded (percent
+ * encoding for special characters and UTF-8 management).
+ */
+
 /*****************************/
 /* Signals documentations    */
 /*****************************/
@@ -88,12 +97,29 @@ BarError PayloadQrUrlPrivate::convert()
 /*      Public Class         */
 /*****************************/
 
+/*!
+ * \brief Create an empty payload URL.
+ * \details
+ * This payload will be invalid.
+ *
+ * \sa isValid()
+ * \sa setUrl()
+ */
 PayloadQrUrl::PayloadQrUrl()
     : Payload(std::make_unique<PayloadQrUrlPrivate>(this))
 {
     /* Nothing to do */
 }
 
+/*!
+ * \brief Allow to initialize a payload URL.
+ *
+ * \param[in] URL
+ * Payload URL to use.
+ *
+ * \sa isValid()
+ * \sa setUrl()
+ */
 PayloadQrUrl::PayloadQrUrl(const QUrl &url)
     : PayloadQrUrl()
 {
@@ -123,6 +149,12 @@ PayloadQrUrl::~PayloadQrUrl()
     /* Nothing to do */
 }
 
+/*!
+ * \brief Allow to set payload URL.
+ *
+ * \param[in] URL
+ * Payload URL to use.
+ */
 void PayloadQrUrl::setUrl(const QUrl &url)
 {
     Q_D(PayloadQrUrl);
