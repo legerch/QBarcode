@@ -7,6 +7,19 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class qbar::QrCode
+ *
+ * \brief Represent a QrCode entity
+ * \details
+ * A QrCode entity is considered as \b immutable, use
+ * \c create() to generate one. \n
+ * Once QrCode is generated, we can render it
+ * (to an image, widget, etc...) via class qbar::RendererQrCode.
+ *
+ * \sa create()
+ */
+
 /*****************************/
 /* Signals documentations    */
 /*****************************/
@@ -116,6 +129,13 @@ BarError QrCodePrivate::generateMatrix()
 /*      Public Class         */
 /*****************************/
 
+/*!
+ * \brief Create an empty QrCode
+ * \details
+ * Initialized instance will be invalid.
+ *
+ * \sa isValid()
+ */
 QrCode::QrCode()
     : Barcode(std::make_unique<QrCodePrivate>(this))
 {
@@ -130,12 +150,22 @@ QrCode::~QrCode()
     /* Nothing to do */
 }
 
+/*!
+ * \brief Retrieve QrCode ECC level
+ * \return
+ * Returns associated ECC level
+ */
 QrLevelEcc QrCode::getIdLevelEcc() const
 {
     Q_D(const QrCode);
     return d->m_idLvlEcc;
 }
 
+/*!
+ * \brief Retrieve QrCode version
+ * \return
+ * Returns associated version
+ */
 int QrCode::getVersion() const
 {
     Q_D(const QrCode);
@@ -148,6 +178,25 @@ QSizeF QrCode::getRatio() const
     return ratio;
 }
 
+/*!
+ * \brief Allow to generate a QrCode
+ * \details
+ * Generate a QrCode, version to use will be deduced
+ * according to the lenght of data to encode and
+ * the choosen ECC level.
+ *
+ * \param[in] payload
+ * Payload content to use.
+ * \param[in] idLevel
+ * ECC level to use.
+ *
+ * \return
+ * Returns generated QrCode. \n
+ * It can be invalid, verify it via \c isValid()
+ * before using it.
+ *
+ * \sa isValid()
+ */
 QrCode QrCode::create(const Payload &payload, QrLevelEcc idLevel)
 {
     /* Set QrCode properties */

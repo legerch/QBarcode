@@ -19,6 +19,13 @@ namespace qbar
 /* Library types             */
 /*****************************/
 
+    /*!
+     * \brief Contains barcode matrix data
+     * \details
+     * Allow to store matrix modules of a barcode
+     *
+     * \sa Barcode::getMatrixData()
+     */
     using MatrixData = Array2D<uint8_t>;
 
 /*****************************/
@@ -65,12 +72,12 @@ namespace qbar
      */
     enum class PayloadType
     {
-        PAYLOAD_TYPE_GENERIC_STRING = 0,
+        PAYLOAD_TYPE_GENERIC_STRING = 0,    /**< Payload containing a string */
 
-        PAYLOAD_TYPE_QR_URL,
-        PAYLOAD_TYPE_QR_WIFI,
+        PAYLOAD_TYPE_QR_URL,                /**< Payload containing QrCode formatted URL datas */
+        PAYLOAD_TYPE_QR_WIFI,               /**< Payload containing QrCode formatted WIFI datas */
 
-        PAYLOAD_TYPE_NB
+        PAYLOAD_TYPE_NB                     /**< Number of supported payloads */
     };
     Q_ENUM_NS(PayloadType)
 
