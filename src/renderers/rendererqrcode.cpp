@@ -123,6 +123,17 @@ RendererQrCode::~RendererQrCode()
 /* Qt specific methods       */
 /*****************************/
 
+QDebug operator<<(QDebug debug, const RendererQrCode &renderer)
+{
+    QDebugStateSaver saver(debug);
+
+    const Renderer &base = renderer;
+
+    debug.nospace() << "RendererQrCode("
+                    << "base: " << base << ")";
+    return debug;
+}
+
 /*****************************/
 /* End namespace             */
 /*****************************/

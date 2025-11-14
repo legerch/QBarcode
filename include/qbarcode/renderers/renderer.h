@@ -59,6 +59,8 @@ protected:
 /* Qt specific methods       */
 /*****************************/
 
+QBAR_EXPORT QDebug operator<<(QDebug debug, const Renderer &renderer);
+
 /*****************************/
 /* Alias for related types   */
 /*****************************/

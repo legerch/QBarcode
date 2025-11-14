@@ -34,6 +34,8 @@ private:
 /* Qt specific methods       */
 /*****************************/
 
+QBAR_EXPORT QDebug operator<<(QDebug debug, const RendererQrCode &renderer);
+
 /*****************************/
 /* Alias for related types   */
 /*****************************/

@@ -192,6 +192,18 @@ QImage Renderer::toImage(const Barcode &barcode)
 /* Qt specific methods       */
 /*****************************/
 
+QDebug operator<<(QDebug debug, const Renderer &renderer)
+{
+    QDebugStateSaver saver(debug);
+
+    debug.nospace() << "Renderer("
+                    << "size-requested: " << renderer.getSizeRequested() << ", "
+                    << "margins: " << renderer.getMargins() << ", "
+                    << "color-bg: " << renderer.getColorBackground() << ", "
+                    << "color-fg: " << renderer.getColorForeground() << ")";
+    return debug;
+}
+
 /*****************************/
 /* End namespace             */
 /*****************************/
