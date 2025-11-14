@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classqbar_1_1_barcode.html" title="Represent a barcode entity." alt="" coords="5,5,117,31"/>
+<area shape="rect" id="Node000001" href="$classqbar_1_1_qr_code.html" title="Represent a QrCode entity." alt="" coords="165,5,272,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="131,15,165,15,165,21,131,21"/>
+</map>

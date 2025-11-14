@@ -1,0 +1,5 @@
+<map id="qbar::RendererQrCode" name="qbar::RendererQrCode">
+<area shape="rect" id="Node000001" title="Represent a QrCode renderer." alt="" coords="5,79,172,104"/>
+<area shape="rect" id="Node000002" href="$classqbar_1_1_renderer.html" title="Allow to render a barcode." alt="" coords="29,5,148,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,44,91,79,86,79,86,44"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classqbar_1_1_payload.html" title="Store data of a Barcode." alt="" coords="5,55,116,80"/>
+<area shape="rect" id="Node000001" href="$classqbar_1_1_payload_qr_string.html" title="Store QrCode string data." alt="" coords="164,5,327,31"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="121,49,196,28,197,33,123,54"/>
+<area shape="rect" id="Node000002" href="$classqbar_1_1_payload_qr_url.html" title="Store QrCode URL data." alt="" coords="173,55,317,80"/>
+<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="130,65,173,65,173,70,130,70"/>
+<area shape="rect" id="Node000003" href="$classqbar_1_1_payload_qr_wifi.html" title="Store QrCode WIFI data." alt="" coords="170,104,321,129"/>
+<area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="123,81,197,101,196,106,121,86"/>
+</map>

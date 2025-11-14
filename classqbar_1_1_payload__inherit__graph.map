@@ -1,0 +1,9 @@
+<map id="qbar::Payload" name="qbar::Payload">
+<area shape="rect" id="Node000001" title="Store data of a Barcode." alt="" coords="209,5,319,31"/>
+<area shape="rect" id="Node000002" href="$classqbar_1_1_payload_qr_string.html" title="Store QrCode string data." alt="" coords="5,79,168,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,38,117,81,115,76,222,33"/>
+<area shape="rect" id="Node000003" href="$classqbar_1_1_payload_qr_url.html" title="Store QrCode URL data." alt="" coords="192,79,336,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,44,267,79,261,79,261,44"/>
+<area shape="rect" id="Node000004" href="$classqbar_1_1_payload_qr_wifi.html" title="Store QrCode WIFI data." alt="" coords="361,79,511,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="305,33,409,76,407,81,303,38"/>
+</map>

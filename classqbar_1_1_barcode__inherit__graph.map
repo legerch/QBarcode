@@ -1,0 +1,5 @@
+<map id="qbar::Barcode" name="qbar::Barcode">
+<area shape="rect" id="Node000001" title="Represent a barcode entity." alt="" coords="5,5,117,31"/>
+<area shape="rect" id="Node000002" href="$classqbar_1_1_qr_code.html" title="Represent a QrCode entity." alt="" coords="8,79,115,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,44,64,79,59,79,59,44"/>
+</map>

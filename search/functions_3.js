@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['getcolorbackground_0',['getColorBackground',['../classqbar_1_1_renderer.html#a655a8c36d19b1bb2995adcbe9ed89a0f',1,'qbar::Renderer']]],
+  ['getcolorforeground_1',['getColorForeground',['../classqbar_1_1_renderer.html#a301213e57020b67303deb0347f3e9335',1,'qbar::Renderer']]],
+  ['getcols_2',['getCols',['../classqbar_1_1_array2_d.html#ab56e3f8bf720d2bcbb8e771bcfab14fe',1,'qbar::Array2D']]],
+  ['getdata_3',['getData',['../classqbar_1_1_payload.html#a5c2cd4d82bf65718efc73922300aed99',1,'qbar::Payload']]],
+  ['getidlevelecc_4',['getIdLevelEcc',['../classqbar_1_1_qr_code.html#a5b0411b6130eaa0ea721b495dc6b27a2',1,'qbar::QrCode']]],
+  ['getlasterror_5',['getLastError',['../classqbar_1_1_payload.html#a2f2e6d67a02cbf2b15ad8d149c88ed65',1,'qbar::Payload']]],
+  ['getlibraryversion_6',['getLibraryVersion',['../namespaceqbar.html#afab5e3535d864a61837ceabed8521b2f',1,'qbar']]],
+  ['getmargins_7',['getMargins',['../classqbar_1_1_renderer.html#a60395e5512e8f115e724fa6591bd3c18',1,'qbar::Renderer']]],
+  ['getmatrixdata_8',['getMatrixData',['../classqbar_1_1_barcode.html#a225ea7a10555dceb87ae60d907d11b61',1,'qbar::Barcode']]],
+  ['getnbelements_9',['getNbElements',['../classqbar_1_1_array2_d.html#afcab0f12b206386f6564c07c41929d8a',1,'qbar::Array2D']]],
+  ['getpassword_10',['getPassword',['../classqbar_1_1_payload_qr_wifi.html#a3d6adb4d6df628769b2a16e4cbd4a903',1,'qbar::PayloadQrWifi']]],
+  ['getpayload_11',['getPayload',['../classqbar_1_1_barcode.html#a23ece4dba307aa69de5de1e1bb45f7a9',1,'qbar::Barcode']]],
+  ['getpayloadas_12',['getPayloadAs',['../classqbar_1_1_barcode.html#a308ddfc87e968417b2f061961ff166f6',1,'qbar::Barcode']]],
+  ['getratio_13',['getRatio',['../classqbar_1_1_barcode.html#a22f977861214c036ff43481935aca9d0',1,'qbar::Barcode::getRatio()'],['../classqbar_1_1_qr_code.html#ab19346a18b627e44d679a7a52b6af206',1,'qbar::QrCode::getRatio()']]],
+  ['getrows_14',['getRows',['../classqbar_1_1_array2_d.html#a401fbef83a4f36c700b2bb9572a0a1c5',1,'qbar::Array2D']]],
+  ['getsecuritytype_15',['getSecurityType',['../classqbar_1_1_payload_qr_wifi.html#a8a6cafc99a58326f5559144068debf16',1,'qbar::PayloadQrWifi']]],
+  ['getsize_16',['getSize',['../classqbar_1_1_barcode.html#ae09a57d58a4a20c6c1270a67b9ced44d',1,'qbar::Barcode::getSize()'],['../classqbar_1_1_array2_d.html#a8d6a9363dde60ee5caaae821346d0e46',1,'qbar::Array2D::getSize()']]],
+  ['getsizerequested_17',['getSizeRequested',['../classqbar_1_1_renderer.html#ae3460569293d6563581bf0a671fc3f06',1,'qbar::Renderer']]],
+  ['getssid_18',['getSsid',['../classqbar_1_1_payload_qr_wifi.html#ab66c88d8b59f9c74b5a8f62c4d8d8397',1,'qbar::PayloadQrWifi']]],
+  ['getstring_19',['getString',['../classqbar_1_1_payload.html#afbaeda8ffe2fa215f4e5ec7ae547114f',1,'qbar::Payload']]],
+  ['gettype_20',['getType',['../classqbar_1_1_barcode.html#a4884f7f07e8bff9258a760f750c1cdf3',1,'qbar::Barcode::getType()'],['../classqbar_1_1_payload.html#a96b048aeea6a6f3cb0dd6c0cf7eec03f',1,'qbar::Payload::getType()']]],
+  ['getversion_21',['getVersion',['../classqbar_1_1_qr_code.html#a193474b8c0369a86ec4c32970505d59f',1,'qbar::QrCode']]]
+];
