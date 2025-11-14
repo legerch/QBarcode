@@ -6,6 +6,15 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class qbar::PayloadQrString
+ *
+ * \brief Store QrCode string data
+ * \details
+ * String data will be properly encoded
+ * to UTF-8 datas.
+ */
+
 /*****************************/
 /* Signals documentations    */
 /*****************************/
@@ -86,12 +95,29 @@ BarError PayloadQrStringPrivate::convert()
 /*      Public Class         */
 /*****************************/
 
+/*!
+ * \brief Create an empty payload string.
+ * \details
+ * This payload will be invalid.
+ *
+ * \sa isValid()
+ * \sa setString()
+ */
 PayloadQrString::PayloadQrString()
     : Payload(std::make_unique<PayloadQrStringPrivate>(this))
 {
     /* Nothing to do */
 }
 
+/*!
+ * \brief Allow to create a payload string from datas.
+ *
+ * \param[in] data
+ * Payload data to use.
+ *
+ * \sa isValid()
+ * \sa setString()
+ */
 PayloadQrString::PayloadQrString(const QString &data)
     : PayloadQrString()
 {
@@ -121,6 +147,12 @@ PayloadQrString::~PayloadQrString()
     /* Nothing to do */
 }
 
+/*!
+ * \brief Allow to set string payload datas.
+ *
+ * \param[in] data
+ * Payload data to use.
+ */
 void PayloadQrString::setString(const QString &data)
 {
     Q_D(PayloadQrString);

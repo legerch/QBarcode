@@ -17,7 +17,7 @@ namespace qbar
 /*****************************/
 
 class PayloadQrUrlPrivate;
-class PayloadQrUrl : public Payload
+class QBAR_EXPORT PayloadQrUrl : public Payload
 {
 public:
     PayloadQrUrl();

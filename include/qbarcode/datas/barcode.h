@@ -2,6 +2,7 @@
 #define QBARCODE_BARCODE_H
 
 #include "qbarcode/payloads/payload.h"
+
 #include <memory>
 #include <QSize>
 
@@ -37,11 +38,22 @@ public:
     const MatrixData& getMatrixData() const;
 
 public:
+    /*!
+     * \brief Retrieve ratio of a barcode
+     * \details
+     * Allow to manage different format of barcode, to know
+     * if they are taller of wider.
+     *
+     * \return
+     * Returns associated ratio.
+     */
     virtual QSizeF getRatio() const = 0;
 
 public:
     template<typename T>
     const T* getPayloadAs() const;
+
+/*! \cond INTERNAL */
 
 protected:
     explicit Barcode(std::unique_ptr<BarcodePrivate> impl);
@@ -49,12 +61,22 @@ protected:
 protected:
     std::unique_ptr<BarcodePrivate> d_ptr;
     Q_DECLARE_PRIVATE(Barcode)
+
+/*! \endcond */
+
 };
 
 /*****************************/
 /* Template methods          */
 /*****************************/
 
+/*!
+ * \brief Allow to directly cast payload to expected type
+ * \return
+ * Returns casted payload pointer. \n
+ * Can be \c NULL if barcode is \em invalid or
+ * if casting cannot be done.
+ */
 template<typename T>
 inline const T* Barcode::getPayloadAs() const
 {

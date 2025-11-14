@@ -4,8 +4,6 @@
 #include <QSize>
 #include <QVector>
 
-//TODO: doc (extracted from toolboxqt lib)
-
 /*****************************/
 /* Namespace instructions    */
 /*****************************/
@@ -17,6 +15,10 @@ namespace qbar
 /* Define template interface */
 /*****************************/
 
+/*!
+ * \class Array2D
+ * \brief Use to manage a 2-dimensional array
+ */
 template <typename T>
 class Array2D
 {

@@ -19,8 +19,18 @@
 INPUT                   =   README.md \
                             include \
                             \
-                            src/class1.cpp \
-                            src/class2.cpp
+                            src/qbartypes.cpp \
+                            \
+                            src/datas/barcode.cpp \
+                            src/datas/qrcode.cpp \
+                            \
+                            src/payloads/payload.cpp \
+                            src/payloads/payloadqrstring.cpp \
+                            src/payloads/payloadqrurl.cpp \
+                            src/payloads/payloadqrwifi.cpp \
+                            \
+                            src/renderers/renderer.cpp \
+                            src/renderers/rendererqrcode.cpp
                             
 EXCLUDE                 =
 

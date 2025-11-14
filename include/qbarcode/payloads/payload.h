@@ -27,9 +27,6 @@ public:
 
     virtual ~Payload();
 
-protected:
-    explicit Payload(std::unique_ptr<PayloadPrivate> impl);
-
 public:
     bool isValid() const;
 
@@ -42,9 +39,17 @@ public:
 public:
     void clear();
 
+/*! \cond INTERNAL */
+
+protected:
+    explicit Payload(std::unique_ptr<PayloadPrivate> impl);
+
 protected:
     std::unique_ptr<PayloadPrivate> d_ptr;
     Q_DECLARE_PRIVATE(Payload)
+
+/*! \endcond */
+
 };
 
 /*****************************/

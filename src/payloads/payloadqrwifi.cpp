@@ -9,6 +9,21 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class qbar::PayloadQrWifi
+ *
+ * \brief Store QrCode WIFI data
+ * \details
+ * Allow to easily set wifi datas of a QrCode. \n
+ * All will be taking care :
+ * - Escaping special characters
+ * - Encoding to UTF-8
+ * - Manage fields of each security type
+ *
+ * For reference, QrCode wifi data formatting is based on this format:
+ * - https://github.com/zxing/zxing/wiki/Barcode-Contents#wi-fi-network-config-android-ios-11
+ */
+
 /*****************************/
 /* Signals documentations    */
 /*****************************/
@@ -118,8 +133,16 @@ BarError PayloadQrWifiPrivate::convert()
     return BarError::QBAR_ERR_NO_ERROR;
 }
 
-//TODO: doc
-// https://github.com/zxing/zxing/wiki/Barcode-Contents#wi-fi-network-config-android-ios-11
+/*!
+ * \brief Allow to escape special characters of the
+ * \b MeCARD format.
+ *
+ * \param[in] string
+ * String to escape.
+ *
+ * \return
+ * Return escaped string.
+ */
 QString PayloadQrWifiPrivate::escapeCharsMecard(const QString &string)
 {
     /* Define characters to escape */
@@ -145,6 +168,12 @@ QString PayloadQrWifiPrivate::escapeCharsMecard(const QString &string)
 /*      Public Class         */
 /*****************************/
 
+/*!
+ * \brief Create an empty wifi payload.
+ *
+ * \sa isValid()
+ * \sa setSecurityType(), setSsid(), setPassword(), setIsHidden()
+ */
 PayloadQrWifi::PayloadQrWifi()
     : Payload(std::make_unique<PayloadQrWifiPrivate>(this))
 {
@@ -174,30 +203,73 @@ PayloadQrWifi::~PayloadQrWifi()
     /* Nothing to do */
 }
 
+/*!
+ * \brief Retrieve security type.
+ *
+ * \return
+ * Returns current security type of wifi payload.
+ *
+ * \sa setSecurityType()
+ */
 PayloadQrWifi::SecurityType PayloadQrWifi::getSecurityType() const
 {
     Q_D(const PayloadQrWifi);
     return d->m_idSecurity;
 }
 
+/*!
+ * \brief Retrieve SSID.
+ *
+ * \return
+ * Returns current SSID of wifi payload.
+ *
+ * \sa setSsid()
+ * \sa getPassword(), setPassword()
+ */
 QString PayloadQrWifi::getSsid() const
 {
     Q_D(const PayloadQrWifi);
     return d->m_ssid;
 }
 
+/*!
+ * \brief Retrieve password.
+ *
+ * \return
+ * Returns current password of wifi payload.
+ *
+ * \sa setPassword()
+ * \sa getSsid(), setSsid()
+ */
 QString PayloadQrWifi::getPassword() const
 {
     Q_D(const PayloadQrWifi);
     return d->m_passwd;
 }
 
+/*!
+ * \brief Do current wifi network payload is set
+ * as an hidden network
+ *
+ * \return
+ * Returns \true if network payload is hidden.
+ *
+ * \sa setIsHidden()
+ */
 bool PayloadQrWifi::isHidden() const
 {
     Q_D(const PayloadQrWifi);
     return d->m_isHidden;
 }
 
+/*!
+ * \brief Set security type.
+ *
+ * \param[in] idSecurity
+ * Security ID to use.
+ *
+ * \sa getSecurityType()
+ */
 void PayloadQrWifi::setSecurityType(SecurityType idSecurity)
 {
     Q_D(PayloadQrWifi);
@@ -206,6 +278,15 @@ void PayloadQrWifi::setSecurityType(SecurityType idSecurity)
     d->updateData();
 }
 
+/*!
+ * \brief Set SSID.
+ *
+ * \param[in] ssid
+ * SSID to use.
+ *
+ * \sa getSsid()
+ * \sa setPassword(), getPassword()
+ */
 void PayloadQrWifi::setSsid(const QString &ssid)
 {
     Q_D(PayloadQrWifi);
@@ -214,6 +295,15 @@ void PayloadQrWifi::setSsid(const QString &ssid)
     d->updateData();
 }
 
+/*!
+ * \brief Set password.
+ *
+ * \param[in] passwd
+ * Password to use.
+ *
+ * \sa getPassword()
+ * \sa setSsid(), getSsid()
+ */
 void PayloadQrWifi::setPassword(const QString &passwd)
 {
     Q_D(PayloadQrWifi);
@@ -222,6 +312,14 @@ void PayloadQrWifi::setPassword(const QString &passwd)
     d->updateData();
 }
 
+/*!
+ * \brief Set network hidden status.
+ *
+ * \param[in] isHidden
+ * Set to \c true if network is hidden.
+ *
+ * \sa isHidden()
+ */
 void PayloadQrWifi::setIsHidden(bool isHidden)
 {
     Q_D(PayloadQrWifi);
@@ -230,6 +328,17 @@ void PayloadQrWifi::setIsHidden(bool isHidden)
     d->updateData();
 }
 
+/*!
+ * \brief Use to convert security type
+ * to string.
+ *
+ * \param[in] idSecurity
+ * Security ID to convert. \n
+ * If unknown, string "unknown" will be returned.
+ *
+ * \return
+ * Returns string equivalent.
+ */
 QString PayloadQrWifi::securityTypeToString(SecurityType idSecurity)
 {
     static const QHash<SecurityType, QString> MAP_SEC_TO_STR =

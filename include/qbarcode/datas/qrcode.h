@@ -37,8 +37,8 @@ private:
     Q_DECLARE_PRIVATE(QrCode)
 
 public:
-    static constexpr int VERSION_MIN = 1;
-    static constexpr int VERSION_MAX = 40;
+    static constexpr int VERSION_MIN = 1;   /**< Minimal supported QrCode version (matrix of 21x21) */
+    static constexpr int VERSION_MAX = 40;  /**< Maximal supported QrCode version (matrix of 177x177) */
 
 public:
     static QrCode create(const Payload &payload, QrLevelEcc idLevel);
