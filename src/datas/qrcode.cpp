@@ -219,6 +219,19 @@ QrCode QrCode::create(const Payload &payload, QrLevelEcc idLevel)
 /* Qt specific methods       */
 /*****************************/
 
+QDebug operator<<(QDebug debug, const QrCode &qrcode)
+{
+    QDebugStateSaver saver(debug);
+
+    const Barcode &base = qrcode;
+
+    debug.nospace() << "QrCode("
+                    << "base: " << base << ", "
+                    << "ecc-level: " << qrcode.getIdLevelEcc() << ", "
+                    << "version: '" << qrcode.getVersion() << ")";
+    return debug;
+}
+
 /*****************************/
 /* End namespace             */
 /*****************************/

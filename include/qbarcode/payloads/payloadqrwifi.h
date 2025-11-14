@@ -62,6 +62,8 @@ private:
 /* Qt specific methods       */
 /*****************************/
 
+QBAR_EXPORT QDebug operator<<(QDebug debug, const PayloadQrWifi &payload);
+
 /*****************************/
 /* Alias for related types   */
 /*****************************/

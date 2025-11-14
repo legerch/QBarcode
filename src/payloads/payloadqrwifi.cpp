@@ -355,6 +355,21 @@ QString PayloadQrWifi::securityTypeToString(SecurityType idSecurity)
 /* Qt specific methods       */
 /*****************************/
 
+QDebug operator<<(QDebug debug, const PayloadQrWifi &payload)
+{
+    QDebugStateSaver saver(debug);
+
+    const Payload &base = payload;
+
+    debug.nospace() << "PayloadQrWifi("
+                    << "base: " << base << ", "
+                    << "security-type: " << payload.getSecurityType() << ", "
+                    << "ssid: '" << payload.getSsid() << "', "
+                    << "passwd: '" << payload.getPassword() << "', "
+                    << "is-hidden: " << payload.isHidden() << ")";
+    return debug;
+}
+
 /*****************************/
 /* End namespace             */
 /*****************************/

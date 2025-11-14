@@ -40,6 +40,8 @@ private:
 /* Qt specific methods       */
 /*****************************/
 
+QBAR_EXPORT QDebug operator<<(QDebug debug, const PayloadQrString &payload);
+
 /*****************************/
 /* Alias for related types   */
 /*****************************/

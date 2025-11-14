@@ -126,6 +126,19 @@ const MatrixData &Barcode::getMatrixData() const
 /* Qt specific methods       */
 /*****************************/
 
+QDebug operator<<(QDebug debug, const Barcode &barcode)
+{
+    QDebugStateSaver saver(debug);
+
+    debug.nospace() << "Barcode("
+                    << "is-valid: " << barcode.isValid() << ", "
+                    << "type: " << barcode.getType() << ", "
+                    << "payload: " << *barcode.getPayload() << ", "
+                    << "size: " << barcode.getSize() << ", "
+                    << "ratio: " << barcode.getRatio() << ")";
+    return debug;
+}
+
 /*****************************/
 /* End namespace             */
 /*****************************/

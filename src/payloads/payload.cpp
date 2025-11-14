@@ -150,6 +150,18 @@ void Payload::clear()
 /* Qt specific methods       */
 /*****************************/
 
+QDebug operator<<(QDebug debug, const Payload &payload)
+{
+    QDebugStateSaver saver(debug);
+
+    debug.nospace() << "Payload("
+                    << "is-valid: " << payload.isValid() << ", "
+                    << "type: " << payload.getType() << ", "
+                    << "data: '" << payload.getData() << "', "
+                    << "last-error: " << payload.getLastError() << ")";
+    return debug;
+}
+
 /*****************************/
 /* End namespace             */
 /*****************************/

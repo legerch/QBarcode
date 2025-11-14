@@ -2,7 +2,10 @@
 #define QBARCODE_PAYLOAD_H
 
 #include "qbarcode/qbartypes.h"
+
 #include <memory>
+
+#include <QDebug>
 
 /*****************************/
 /* Namespace instructions    */
@@ -55,6 +58,8 @@ protected:
 /*****************************/
 /* Qt specific methods       */
 /*****************************/
+
+QBAR_EXPORT QDebug operator<<(QDebug debug, const Payload &payload);
 
 /*****************************/
 /* Alias for related types   */
