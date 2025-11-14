@@ -64,6 +64,15 @@ private:
 
 QBAR_EXPORT QDebug operator<<(QDebug debug, const PayloadQrWifi &payload);
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+
+inline uint qHash(qbar::PayloadQrWifi::SecurityType key, uint seed = 0)
+{
+    return ::qHash(static_cast<std::underlying_type<qbar::PayloadQrWifi::SecurityType>::type>(key), seed);
+}
+
+#endif
+
 /*****************************/
 /* Alias for related types   */
 /*****************************/

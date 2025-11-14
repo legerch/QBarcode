@@ -130,9 +130,9 @@ inline uint qHash(qbar::PayloadType key, uint seed = 0)
     return ::qHash(static_cast<std::underlying_type<qbar::PayloadType>::type>(key), seed);
 }
 
-inline uint qHash(qbar::QrLevel key, uint seed = 0)
+inline uint qHash(qbar::QrLevelEcc key, uint seed = 0)
 {
-    return ::qHash(static_cast<std::underlying_type<qbar::QrLevel>::type>(key), seed);
+    return ::qHash(static_cast<std::underlying_type<qbar::QrLevelEcc>::type>(key), seed);
 }
 
 #endif
