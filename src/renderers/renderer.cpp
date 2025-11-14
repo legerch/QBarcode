@@ -178,6 +178,13 @@ void Renderer::setColorForeground(const QColor &color)
  */
 QImage Renderer::toImage(const Barcode &barcode)
 {
+    /* Verify barcode validity */
+    if(!barcode.isValid()){
+        qCritical("Rendering barcode to image failed due to barcode being invalid");
+        return QImage();
+    }
+
+    /* Render to image */
     return d_ptr->renderToImage(barcode);
 }
 
