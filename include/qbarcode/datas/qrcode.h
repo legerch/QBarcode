@@ -48,6 +48,8 @@ public:
 /* Qt specific methods       */
 /*****************************/
 
+QBAR_EXPORT QDebug operator<<(QDebug debug, const QrCode &qrcode);
+
 /*****************************/
 /* Alias for related types   */
 /*****************************/

@@ -4,6 +4,7 @@
 #include "qbarcode/payloads/payload.h"
 
 #include <memory>
+
 #include <QSize>
 
 /*****************************/
@@ -86,6 +87,8 @@ inline const T* Barcode::getPayloadAs() const
 /*****************************/
 /* Qt specific methods       */
 /*****************************/
+
+QBAR_EXPORT QDebug operator<<(QDebug debug, const Barcode &barcode);
 
 /*****************************/
 /* Alias for related types   */
