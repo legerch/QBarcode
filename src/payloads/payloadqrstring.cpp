@@ -165,6 +165,18 @@ void PayloadQrString::setString(const QString &data)
 /* Qt specific methods       */
 /*****************************/
 
+QDebug operator<<(QDebug debug, const PayloadQrString &payload)
+{
+    QDebugStateSaver saver(debug);
+
+    const Payload &base = payload;
+
+    debug.nospace() << "PayloadQrString("
+                    << "base: " << base << ", "
+                    << "string: '" << payload.getString() << "')";
+    return debug;
+}
+
 /*****************************/
 /* End namespace             */
 /*****************************/

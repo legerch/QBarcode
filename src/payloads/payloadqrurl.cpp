@@ -150,10 +150,26 @@ PayloadQrUrl::~PayloadQrUrl()
 }
 
 /*!
+ * \brief Retrieve payload URL.
+ *
+ * \return
+ * Returns current URL of payload.
+ *
+ * \sa setUrl()
+ */
+QUrl PayloadQrUrl::getUrl() const
+{
+    Q_D(const PayloadQrUrl);
+    return d->m_url;
+}
+
+/*!
  * \brief Allow to set payload URL.
  *
  * \param[in] URL
  * Payload URL to use.
+ *
+ * \sa getUrl()
  */
 void PayloadQrUrl::setUrl(const QUrl &url)
 {
@@ -166,6 +182,18 @@ void PayloadQrUrl::setUrl(const QUrl &url)
 /*****************************/
 /* Qt specific methods       */
 /*****************************/
+
+QDebug operator<<(QDebug debug, const PayloadQrUrl &payload)
+{
+    QDebugStateSaver saver(debug);
+
+    const Payload &base = payload;
+
+    debug.nospace() << "PayloadQrUrl("
+                    << "base: " << base << ", "
+                    << "url: " << payload.getUrl() << ")";
+    return debug;
+}
 
 /*****************************/
 /* End namespace             */

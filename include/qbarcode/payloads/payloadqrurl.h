@@ -32,6 +32,9 @@ public:
     virtual ~PayloadQrUrl();
 
 public:
+    QUrl getUrl() const;
+
+public:
     void setUrl(const QUrl &url);
 
 private:
@@ -41,6 +44,8 @@ private:
 /*****************************/
 /* Qt specific methods       */
 /*****************************/
+
+QBAR_EXPORT QDebug operator<<(QDebug debug, const PayloadQrUrl &payload);
 
 /*****************************/
 /* Alias for related types   */
