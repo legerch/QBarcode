@@ -56,4 +56,6 @@ QBAR_EXPORT QDebug operator<<(QDebug debug, const PayloadQrString &payload);
 /* Qt specific meta-system   */
 /*****************************/
 
+Q_DECLARE_METATYPE(qbar::PayloadQrString)
+
 #endif // QBARCODE_PAYLOADQRSTRING_H

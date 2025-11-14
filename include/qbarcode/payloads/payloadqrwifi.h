@@ -78,4 +78,6 @@ QBAR_EXPORT QDebug operator<<(QDebug debug, const PayloadQrWifi &payload);
 /* Qt specific meta-system   */
 /*****************************/
 
+Q_DECLARE_METATYPE(qbar::PayloadQrWifi)
+
 #endif // QBARCODE_PAYLOADQRWIFI_H
