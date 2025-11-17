@@ -1,4 +1,4 @@
-#include "typesqrencode.h"
+#include "qrcodeutils.h"
 
 #include <QHash>
 
@@ -11,10 +11,17 @@
 /*****************************/
 
 /*!
- * \namespace qwm::libqrencode
- * \brief Namespace used to manage types
- * from <b>QrEncode Library</b>.
+ * \namespace qbar::utils
+ * \brief Namespace used to manage
+ * all barcode utilities.
+ */
+
+/*!
+ * \namespace qbar::utils::qrc
+ * \brief Namespace used to manage all QrCode
+ * utilities including backend library.
  * \details
+ * Backend used for QrCode generation is \b libqrencode. \n
  * For more details, see:
  * - https://fukuchi.org/works/qrencode/manual/
  */
@@ -31,7 +38,7 @@
 /* Start namespace           */
 /*****************************/
 
-namespace qbar::libqrencode
+namespace qbar::utils::qrc
 {
 
 
@@ -67,7 +74,7 @@ QRecLevel convertLevelEccToApi(QrLevelEcc idLevel)
 /* End namespace             */
 /*****************************/
 
-} // namespace qwm::libqrencode
+} // namespace qbar::utils::qrc
 
 /*****************************/
 /* End file                  */

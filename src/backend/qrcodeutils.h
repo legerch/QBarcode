@@ -1,5 +1,5 @@
-#ifndef QBARCODE_BACKEND_TYPESQRENCODE_H
-#define QBARCODE_BACKEND_TYPESQRENCODE_H
+#ifndef QBARCODE_BACKEND_QRCODEUTILS_H
+#define QBARCODE_BACKEND_QRCODEUTILS_H
 
 #include "qbarcode/qbartypes.h"
 
@@ -9,7 +9,7 @@
 /* Namespace instructions    */
 /*****************************/
 
-namespace qbar::libqrencode
+namespace qbar::utils::qrc
 {
     Q_NAMESPACE
 
@@ -27,10 +27,10 @@ namespace qbar::libqrencode
 /* End namespaces            */
 /*****************************/
 
-} // namespace qbar
+} // namespace qbar::utils::qrc
 
 /*****************************/
 /* Qt specific meta-system   */
 /*****************************/
 
-#endif // QBARCODE_BACKEND_TYPESQRENCODE_H
+#endif // QBARCODE_BACKEND_QRCODEUTILS_H

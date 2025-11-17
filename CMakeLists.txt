@@ -116,7 +116,7 @@ set(PROJECT_HEADERS_PUBLIC
 
 ### Private
 set(PROJECT_HEADERS_PRIVATE
-    backend/typesqrencode.h
+    backend/qrcodeutils.h
 
     datas/barcode_priv.h
 
@@ -128,7 +128,7 @@ set(PROJECT_HEADERS_PRIVATE
 set(PROJECT_SOURCES
     qbartypes.cpp
 
-    backend/typesqrencode.cpp
+    backend/qrcodeutils.cpp
 
     datas/barcode.cpp
     datas/barcode_priv.cpp

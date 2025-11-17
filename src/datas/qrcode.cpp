@@ -1,6 +1,6 @@
 #include "qbarcode/datas/qrcode.h"
 
-#include "backend/typesqrencode.h"
+#include "backend/qrcodeutils.h"
 #include "datas/barcode_priv.h"
 
 /*****************************/
@@ -95,7 +95,7 @@ BarError QrCodePrivate::generateMatrix()
 {
     /* Prepare needed datas */
     const QByteArray data = m_payload->getData();
-    const QRecLevel idLevel = libqrencode::convertLevelEccToApi(m_idLvlEcc);
+    const QRecLevel idLevel = utils::qrc::convertLevelEccToApi(m_idLvlEcc);
     const unsigned char *rawData = reinterpret_cast<const unsigned char *>(data.constData());
     constexpr int qrVersion = 0; // Use 0 to let library choose minimal version posssible considering payload and level of ECC.
 
