@@ -104,6 +104,9 @@ set(PROJECT_HEADERS_PUBLIC
     datas/qrcode.h
 
     payloads/payload.h
+
+    payloads/payloadean13.h
+
     payloads/payloadqrstring.h
     payloads/payloadqrurl.h
     payloads/payloadqrwifi.h
@@ -136,6 +139,9 @@ set(PROJECT_SOURCES
 
     payloads/payload.cpp
     payloads/payload_priv.cpp
+
+    payloads/payloadean13.cpp
+
     payloads/payloadqrstring.cpp
     payloads/payloadqrurl.cpp
     payloads/payloadqrwifi.cpp
