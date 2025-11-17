@@ -21,5 +21,6 @@ var searchData=
   ['getssid_18',['getSsid',['../classqbar_1_1_payload_qr_wifi.html#ab66c88d8b59f9c74b5a8f62c4d8d8397',1,'qbar::PayloadQrWifi']]],
   ['getstring_19',['getString',['../classqbar_1_1_payload.html#afbaeda8ffe2fa215f4e5ec7ae547114f',1,'qbar::Payload']]],
   ['gettype_20',['getType',['../classqbar_1_1_barcode.html#a4884f7f07e8bff9258a760f750c1cdf3',1,'qbar::Barcode::getType()'],['../classqbar_1_1_payload.html#a96b048aeea6a6f3cb0dd6c0cf7eec03f',1,'qbar::Payload::getType()']]],
-  ['getversion_21',['getVersion',['../classqbar_1_1_qr_code.html#a193474b8c0369a86ec4c32970505d59f',1,'qbar::QrCode']]]
+  ['geturl_21',['getUrl',['../classqbar_1_1_payload_qr_url.html#a8d34a26d6643f4d42b5c9e8f7eb4076e',1,'qbar::PayloadQrUrl']]],
+  ['getversion_22',['getVersion',['../classqbar_1_1_qr_code.html#a193474b8c0369a86ec4c32970505d59f',1,'qbar::QrCode']]]
 ];

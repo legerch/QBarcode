@@ -204,9 +204,9 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    return ::qHash(<span class="keyword">static_cast&lt;</span>std::underlying_type&lt;qbar::PayloadType&gt;::type<span class="keyword">&gt;</span>(key), seed);</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>}</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="keyword">inline</span> uint qHash(qbar::QrLevel key, uint seed = 0)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="keyword">inline</span> uint qHash(<a class="code hl_enumeration" href="namespaceqbar.html#a04ae6613213883c3b797fa52c1cc059c">qbar::QrLevelEcc</a> key, uint seed = 0)</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>{</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    return ::qHash(<span class="keyword">static_cast&lt;</span>std::underlying_type&lt;qbar::QrLevel&gt;::type<span class="keyword">&gt;</span>(key), seed);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    return ::qHash(<span class="keyword">static_cast&lt;</span>std::underlying_type&lt;qbar::QrLevelEcc&gt;::type<span class="keyword">&gt;</span>(key), seed);</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="preprocessor">#endif</span></div>
@@ -223,7 +223,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#endif </span><span class="comment">// QBARCODE_QWLANTYPES_H</span></div>
 <div class="ttc" id="aclassqbar_1_1_array2_d_html"><div class="ttname"><a href="classqbar_1_1_array2_d.html">qbar::Array2D</a></div><div class="ttdoc">Use to manage a 2-dimensional array.</div><div class="ttdef"><b>Definition</b> array2d.h:24</div></div>
-<div class="ttc" id="anamespaceqbar_html"><div class="ttname"><a href="namespaceqbar.html">qbar</a></div><div class="ttdoc">Namespace used for QWlanManager library.</div><div class="ttdef"><b>Definition</b> barcode.h:14</div></div>
+<div class="ttc" id="anamespaceqbar_html"><div class="ttname"><a href="namespaceqbar.html">qbar</a></div><div class="ttdoc">Namespace used for QWlanManager library.</div><div class="ttdef"><b>Definition</b> barcode.h:15</div></div>
 <div class="ttc" id="anamespaceqbar_html_a04ae6613213883c3b797fa52c1cc059c"><div class="ttname"><a href="namespaceqbar.html#a04ae6613213883c3b797fa52c1cc059c">qbar::QrLevelEcc</a></div><div class="ttdeci">QrLevelEcc</div><div class="ttdoc">Qrcode level of errors correction capability (ECC).</div><div class="ttdef"><b>Definition</b> qbartypes.h:96</div></div>
 <div class="ttc" id="anamespaceqbar_html_a04ae6613213883c3b797fa52c1cc059ca5474326c135ee26fd8cccd4368172ebf"><div class="ttname"><a href="namespaceqbar.html#a04ae6613213883c3b797fa52c1cc059ca5474326c135ee26fd8cccd4368172ebf">qbar::QrLevelEcc::QR_ECC_MEDIUM</a></div><div class="ttdeci">@ QR_ECC_MEDIUM</div></div>
 <div class="ttc" id="anamespaceqbar_html_a04ae6613213883c3b797fa52c1cc059ca7b040cb162561020b2d4a970717a5120"><div class="ttname"><a href="namespaceqbar.html#a04ae6613213883c3b797fa52c1cc059ca7b040cb162561020b2d4a970717a5120">qbar::QrLevelEcc::QR_ECC_QUARTILE</a></div><div class="ttdeci">@ QR_ECC_QUARTILE</div></div>
@@ -250,7 +250,7 @@ $(function(){ initResizable(false); });
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 14 2025 08:50:10 for QBarcode by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+Generated on Mon Nov 17 2025 08:38:11 for QBarcode by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
 </small></address>
 </div><!-- doc-content -->
 </body>
