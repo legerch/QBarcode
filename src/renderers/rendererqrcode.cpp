@@ -79,8 +79,8 @@ QImage RendererQrCodePrivate::renderToImage(const Barcode &barcode)
     /* Draw modules */
     const MatrixData &matrixData = barcode.getMatrixData();
 
-    const int nbRows = matrixData.getRows();
-    const int nbCols = matrixData.getCols();
+    const int nbRows = static_cast<int>(matrixData.getRows());
+    const int nbCols = static_cast<int>(matrixData.getCols());
     const int sizeMod = m_sizeModule;
 
     for(int y = 0; y < nbRows; ++y){

@@ -148,7 +148,7 @@ inline size_t Array2D<T>::getNbElements() const
 template<typename T>
 QSize Array2D<T>::getSize() const
 {
-    return QSize(m_cols, m_rows);
+    return QSize(static_cast<int>(m_cols), static_cast<int>(m_rows));
 }
 
 /*!
