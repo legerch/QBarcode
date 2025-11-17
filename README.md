@@ -107,7 +107,7 @@ Since library header used during final application build could differ from the a
 ```cpp
 #include "qbarcode/qbartypes.h"
 
-const QVersionNumber libSemver = qwm::getLibraryVersion();
+const QVersionNumber libSemver = qbar::getLibraryVersion();
 ```
 
 # 5. Documentation
