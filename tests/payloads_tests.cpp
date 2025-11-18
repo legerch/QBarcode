@@ -1,8 +1,9 @@
 #include "gtest/gtest.h"
 
+#include "helpers/testsutils.h"
+
 #include "qbarcode/payloads/payloadqrstring.h"
 #include "qbarcode/payloads/payloadqrurl.h"
-#include "qbarcode/payloads/payloadqrwifi.h"
 
 struct DataPayload
 {
@@ -16,7 +17,6 @@ class PayloadTest : public testing::Test
 {
 protected:
     using ListDatas = QVector<DataPayload>;
-    using IdWifiSec = qbar::PayloadQrWifi::SecurityType;
 
 protected:
     void validate(const ListDatas &listItems)
@@ -31,34 +31,22 @@ protected:
             }
         }
     }
-
-    qbar::PayloadQrWifi createPayloadWifi(IdWifiSec idSec, const QString &ssid, const QString &passwd, bool isHidden)
-    {
-        qbar::PayloadQrWifi payload;
-
-        payload.setSecurityType(idSec);
-        payload.setSsid(ssid);
-        payload.setPassword(passwd);
-        payload.setIsHidden(isHidden);
-
-        return payload;
-    }
 };
 
 TEST_F(PayloadTest, validateQrString)
 {
-    const ListDatas lists = {
+    const ListDatas list = {
         {.input = qbar::PayloadQrString(""), .isValid = false, .data = ""},
         {.input = qbar::PayloadQrString("azerty"), .isValid = true, .data = "azerty"},
         {.input = qbar::PayloadQrString("La fenêtre spéciale coûte 1 299$, soit 80.57%"), .isValid = true, .data = "La fenêtre spéciale coûte 1 299$, soit 80.57%"}
     };
 
-    validate(lists);
+    validate(list);
 }
 
 TEST_F(PayloadTest, validateQrUrl)
 {
-    const ListDatas lists = {
+    const ListDatas list = {
         {.input = qbar::PayloadQrUrl(QUrl("")), .isValid = false, .data = ""},
         {.input = qbar::PayloadQrUrl(QUrl("azerty")), .isValid = false, .data = ""},
         {.input = qbar::PayloadQrUrl(QUrl("my/file")), .isValid = false, .data = ""},
@@ -74,27 +62,27 @@ TEST_F(PayloadTest, validateQrUrl)
         {.input = qbar::PayloadQrUrl(QUrl("https://example.com/file%20name.txt")), .isValid = true, .data = "https://example.com/file%20name.txt"}, // Input datas already encoded*/
     };
 
-    validate(lists);
+    validate(list);
 }
 
 TEST_F(PayloadTest, validateQrWifi)
 {
-    const ListDatas lists = {
-        {.input = createPayloadWifi(IdWifiSec::NB_SECURITY_TYPE, "", "", false), .isValid = false, .data = ""},
+    const ListDatas list = {
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::NB_SECURITY_TYPE, "", "", false), .isValid = false, .data = ""},
 
-        {.input = createPayloadWifi(IdWifiSec::NO_SECURITY, "", "", false), .isValid = false, .data = ""},
-        {.input = createPayloadWifi(IdWifiSec::NO_SECURITY, "Open Network", "", false), .isValid = true, .data = "WIFI:T:nopass;S:Open Network;;"},
-        {.input = createPayloadWifi(IdWifiSec::NO_SECURITY, "Open Network", "A password", true), .isValid = true, .data = "WIFI:T:nopass;S:Open Network;H:true;;"},
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::NO_SECURITY, "", "", false), .isValid = false, .data = ""},
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::NO_SECURITY, "Open Network", "", false), .isValid = true, .data = "WIFI:T:nopass;S:Open Network;;"},
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::NO_SECURITY, "Open Network", "A password", true), .isValid = true, .data = "WIFI:T:nopass;S:Open Network;H:true;;"},
 
-        {.input = createPayloadWifi(IdWifiSec::WEP, "", "", false), .isValid = false, .data = ""},
-        {.input = createPayloadWifi(IdWifiSec::WEP, "My wep network", "", false), .isValid = false, .data = ""},
-        {.input = createPayloadWifi(IdWifiSec::WEP, "My wep network", "A password", true), .isValid = true, .data = "WIFI:T:WEP;S:My wep network;P:A password;H:true;;"},
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::WEP, "", "", false), .isValid = false, .data = ""},
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::WEP, "My wep network", "", false), .isValid = false, .data = ""},
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::WEP, "My wep network", "A password", true), .isValid = true, .data = "WIFI:T:WEP;S:My wep network;P:A password;H:true;;"},
 
-        {.input = createPayloadWifi(IdWifiSec::WPA, "", "", false), .isValid = false, .data = ""},
-        {.input = createPayloadWifi(IdWifiSec::WPA, "My WPA network", "", false), .isValid = false, .data = ""},
-        {.input = createPayloadWifi(IdWifiSec::WPA, R"(My;complicated:net foo:bar\baz)", R"(p"ass:and ;try)", true), .isValid = true, .data = R"(WIFI:T:WPA;S:My\;complicated\:net foo\:bar\\baz;P:p\"ass\:and \;try;H:true;;)"},
-        {.input = createPayloadWifi(IdWifiSec::WPA, R"($péçiàl ñ€ẗẅôяж)", R"(фд55ωõʀd)", false), .isValid = true, .data = R"(WIFI:T:WPA;S:$péçiàl ñ€ẗẅôяж;P:фд55ωõʀd;;)"},
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::WPA, "", "", false), .isValid = false, .data = ""},
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::WPA, "My WPA network", "", false), .isValid = false, .data = ""},
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::WPA, R"(My;complicated:net foo:bar\baz)", R"(p"ass:and ;try)", true), .isValid = true, .data = R"(WIFI:T:WPA;S:My\;complicated\:net foo\:bar\\baz;P:p\"ass\:and \;try;H:true;;)"},
+        {.input = TestsUtils::createPayloadWifi(IdWifiSec::WPA, R"($péçiàl ñ€ẗẅôяж)", R"(фд55ωõʀd)", false), .isValid = true, .data = R"(WIFI:T:WPA;S:$péçiàl ñ€ẗẅôяж;P:фд55ωõʀd;;)"},
     };
 
-    validate(lists);
+    validate(list);
 }

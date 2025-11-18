@@ -59,11 +59,11 @@ set(PROJECT_LINKING_LIB
 
 ## Set tests files
 set(FILES_HEADERS
-    helpers/testsrsc.h
+    helpers/testsutils.h
 )
 
 set(FILES_SOURCES
-    helpers/testsrsc.cpp
+    helpers/testsutils.cpp
 
     payloads_tests.cpp
 )
