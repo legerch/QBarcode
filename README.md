@@ -60,6 +60,7 @@ Below, list of required dependencies:
 | Dependencies | VCPKG package | Comments |
 |:-:|:-:|:-:|
 | [Qt][qt-official] | / | Compatible with **Qt6.x**<br>Compatible with **Qt5.15.x** |
+| [Google Test][gtest-repo] | `gtest` | Only needed to run unit-tests |
 | [libqrencode][lib-qrencode-repo] | `libqrencode` | / |
 
 > [!NOTE]
