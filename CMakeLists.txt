@@ -32,7 +32,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
 # Define project options
-# Example: option(QBAR_BUILD_TESTS "Use to enable/disable build of unit-tests." ON)
+option(QBAR_BUILD_TESTS "Use to enable/disable build of unit-tests." ON)
 
 # Manage global compiler options
 ## For MSVC: force to read source code as UTF-8 file (already default behaviour on GCC/Clang)

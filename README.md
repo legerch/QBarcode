@@ -15,6 +15,7 @@
   - [2.2. Dependencies](#22-dependencies)
 - [3. How to build](#3-how-to-build)
   - [3.1. CMake Usage](#31-cmake-usage)
+  - [3.2. CMake options](#32-cmake-options)
 - [4. How to use](#4-how-to-use)
   - [4.1. Usage](#41-usage)
   - [4.2. Library version](#42-library-version)
@@ -78,6 +79,11 @@ add_subdirectory(qbarcode) # Or if library is put in a folder "dependencies" : a
 # Link needed libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE qbarcode)
 ```
+
+## 3.2. CMake options
+
+This library provide some **CMake** build options:
+- `QBAR_BUILD_TESTS` (default: `ON`): Use to enable/disable unit-tests build
 
 # 4. How to use
 ## 4.1. Usage
