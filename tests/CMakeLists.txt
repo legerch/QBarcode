@@ -73,6 +73,13 @@ set(FILES_SOURCES
 set(PROJECT_FILES ${FILES_HEADERS} ${FILES_SOURCES})
 add_executable(${PROJECT_NAME} ${PROJECT_FILES})
 
+# Manage issues due to designated initializers not available before C++ 20 (only used in tests)
+if(${CMAKE_CXX_STANDARD} LESS 20)
+    set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
+endif()
+get_property(PRJ_TEST_CXX_STD TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD)
+message(STATUS "Project \"${PROJECT_NAME}\" compiled with C++ standard ${PRJ_TEST_CXX_STD}")
+
 # Link needed libraries
 target_link_directories(${PROJECT_NAME} PUBLIC ${PROJECT_LINKING_DIR})
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC ${PROJECT_LINKING_LIB})
