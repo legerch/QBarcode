@@ -66,6 +66,7 @@ set(FILES_SOURCES
     helpers/testsutils.cpp
 
     payloads_tests.cpp
+    qrcode_tests.cpp
 )
 
 # Add files to the test application
