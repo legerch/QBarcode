@@ -152,7 +152,7 @@ QString PayloadQrWifiPrivate::escapeCharsMecard(const QString &string)
 
     /* Recreate the string */
     QString fmt;
-    for(const QChar &c : string){
+    for(QChar c : string){
         if(TO_ESCAPE.contains(c)){
             fmt.append(QChar('\\')); // Put backslash before adding the character
         }

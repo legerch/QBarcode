@@ -11,12 +11,6 @@
 /*****************************/
 
 /*!
- * \namespace qbar::utils
- * \brief Namespace used to manage
- * all barcode utilities.
- */
-
-/*!
  * \namespace qbar::utils::qrc
  * \brief Namespace used to manage all QrCode
  * utilities including backend library.
@@ -41,6 +35,9 @@
 namespace qbar::utils::qrc
 {
 
+/*****************************/
+/* Functions definitions     */
+/*****************************/
 
 /*!
  * \brief Use to convert <b>Error Correction
