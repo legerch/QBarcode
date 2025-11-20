@@ -19,6 +19,7 @@ class QBAR_EXPORT PayloadEan13 : public Payload
 {
 public:
     PayloadEan13();
+    PayloadEan13(const QString &digits);
 
     PayloadEan13(const PayloadEan13 &other);
     PayloadEan13 &operator=(const PayloadEan13 &other);
@@ -27,6 +28,12 @@ public:
     PayloadEan13 &operator=(PayloadEan13 &&) noexcept;
 
     virtual ~PayloadEan13();
+
+public:
+    QString getDigits() const;
+
+public:
+    void setDigits(const QString &digits);
 
 private:
     Q_DECLARE_PRIVATE(PayloadEan13)

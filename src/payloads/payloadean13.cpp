@@ -1,5 +1,6 @@
 #include "qbarcode/payloads/payloadean13.h"
 
+#include "backend/qbarutils.h"
 #include "payloads/payload_priv.h"
 
 /*****************************/
@@ -82,7 +83,7 @@ BarError PayloadEan13Private::convert()
         return BarError::QBAR_ERR_ITEM_INVALID;
     }
 
-    //TODO: implement (regex for digit only/space but perform a trim before)
+    //TODO: implement (check lenght : 12 digits only)
     return BarError::QBAR_ERR_UNKNOWN;
 }
 
@@ -103,6 +104,22 @@ PayloadEan13::PayloadEan13()
     : Payload(std::make_unique<PayloadEan13Private>(this))
 {
     /* Nothing to do */
+}
+
+/*!
+ * \brief Allow to create an EAN-13 payload.
+ *
+ * \param[in] digits
+ * Digits data to use. \n
+ * Any characters that is not a digit will be ignored.
+ *
+ * \sa isValid()
+ * \sa setDigits()
+ */
+PayloadEan13::PayloadEan13(const QString &digits)
+    : PayloadEan13()
+{
+    setDigits(digits);
 }
 
 PayloadEan13::PayloadEan13(const PayloadEan13 &other)
@@ -128,20 +145,50 @@ PayloadEan13::~PayloadEan13()
     /* Nothing to do */
 }
 
+/*!
+ * \brief Retrieve EAN-13 payload.
+ *
+ * \return
+ * Returns current digits payload.
+ *
+ * \sa setDigits()
+ */
+QString PayloadEan13::getDigits() const
+{
+    Q_D(const PayloadEan13);
+    return d->m_digits;
+}
+
+/*!
+ * \brief Allow to set EAN-13 payload.
+ *
+ * \param[in] digits
+ * Digits data to use. \n
+ * Any characters that is not a digit will be ignored.
+ *
+ * \sa getDigits()
+ */
+void PayloadEan13::setDigits(const QString &digits)
+{
+    Q_D(PayloadEan13);
+
+    d->m_digits = utils::stringDigitsOnly(digits);
+    d->updateData();
+}
+
 /*****************************/
 /* Qt specific methods       */
 /*****************************/
 
 QDebug operator<<(QDebug debug, const PayloadEan13 &payload)
 {
-    //TODO: implement
     QDebugStateSaver saver(debug);
 
     const Payload &base = payload;
 
     debug.nospace() << "PayloadEan13("
                     << "base: " << base << ", "
-                    << "digits: '" << payload.getString() << "')";
+                    << "digits: '" << payload.getDigits() << "')";
     return debug;
 }
 
