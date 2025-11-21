@@ -119,6 +119,7 @@ set(PROJECT_HEADERS_PUBLIC
 
 ### Private
 set(PROJECT_HEADERS_PRIVATE
+    backend/eanutils.h
     backend/qbarutils.h
     backend/qrcodeutils.h
 
@@ -132,6 +133,7 @@ set(PROJECT_HEADERS_PRIVATE
 set(PROJECT_SOURCES
     qbartypes.cpp
 
+    backend/eanutils.cpp
     backend/qbarutils.cpp
     backend/qrcodeutils.cpp
 

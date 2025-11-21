@@ -2,6 +2,7 @@
 
 #include "helpers/testsutils.h"
 
+#include "qbarcode/payloads/payloadean13.h"
 #include "qbarcode/payloads/payloadqrstring.h"
 #include "qbarcode/payloads/payloadqrurl.h"
 
@@ -32,6 +33,28 @@ protected:
         }
     }
 };
+
+TEST_F(PayloadTest, validateEan13)
+{
+    const ListDatas list = {
+        {.input = qbar::PayloadEan13(""), .isValid = false, .data = ""},
+        {.input = qbar::PayloadEan13("azerty"), .isValid = false, .data = ""},
+
+        {.input = qbar::PayloadEan13("123456789012"), .isValid = true, .data = "1234567890128"},
+        {.input = qbar::PayloadEan13("1 234567 89012"), .isValid = true, .data = "1234567890128"},
+        {.input = qbar::PayloadEan13("1-234567-89012"), .isValid = true, .data = "1234567890128"},
+        {.input = qbar::PayloadEan13("1- -234567- -89012"), .isValid = true, .data = "1234567890128"},
+
+        {.input = qbar::PayloadEan13("1234567890123"), .isValid = false, .data = ""},
+        {.input = qbar::PayloadEan13("12345678901"), .isValid = false, .data = ""},
+
+        {.input = qbar::PayloadEan13("945217658974"), .isValid = true, .data = "9452176589741"},
+        {.input = qbar::PayloadEan13("471951200288"), .isValid = true, .data = "4719512002889"},
+        {.input = qbar::PayloadEan13("210987654321"), .isValid = true, .data = "2109876543210"}
+    };
+
+    validate(list);
+}
 
 TEST_F(PayloadTest, validateQrString)
 {

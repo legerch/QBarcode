@@ -1,5 +1,6 @@
 #include "qbarcode/payloads/payloadean13.h"
 
+#include "backend/eanutils.h"
 #include "backend/qbarutils.h"
 #include "payloads/payload_priv.h"
 
@@ -46,6 +47,9 @@ protected:
 
 protected:
     QString m_digits;
+
+private:
+    static constexpr int NB_DIGITS_INPUT = 12;
 };
 
 /*****************************/
@@ -78,13 +82,7 @@ std::unique_ptr<PayloadPrivate> PayloadEan13Private::clone(Payload *parent) cons
 
 BarError PayloadEan13Private::convert()
 {
-    /* Verify that string is valid */
-    if(m_digits.isEmpty()){
-        return BarError::QBAR_ERR_ITEM_INVALID;
-    }
-
-    //TODO: implement (check lenght : 12 digits only)
-    return BarError::QBAR_ERR_UNKNOWN;
+    return utils::ean::encodeData(m_digits, NB_DIGITS_INPUT, m_data);
 }
 
 /*****************************/
